@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Furniture plans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#E4E6E3;--paper:#F2F3F1;--ink:#1E2225;--muted:#586065;--line:#C3C8C5;--wood:#D2A77F;--dim:#1B6A86;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme: dark){:root{--bg:#15181A;--paper:#1D2124;--ink:#E5E8E6;--muted:#9AA3A7;--line:#33393D;--wood:#9C7250;--dim:#6FB8D2}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Archivo","Helvetica Neue",Arial,sans-serif;line-height:1.5}
+main{max-width:880px;margin:0 auto;padding:48px 20px 60px}
+h1{font-stretch:75%;font-weight:800;font-size:clamp(38px,7vw,64px);line-height:1;margin:0 0 12px}
+p.lede{color:var(--muted);max-width:60ch;margin:0 0 36px}
+.plans{display:grid;gap:16px}
+a.plan{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:center;text-decoration:none;color:inherit;
+  background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px}
+a.plan:hover{border-color:var(--ink)}
+a.plan:focus-visible{outline:3px solid var(--dim);outline-offset:3px}
+a.plan h2{font-stretch:85%;font-size:26px;margin:0 0 4px}
+a.plan p{margin:0;color:var(--muted)}
+.size{color:var(--dim);font-weight:650;font-variant-numeric:tabular-nums;margin-top:6px!important}
+svg{width:100%;height:auto}
+.extra{margin-top:28px;color:var(--muted);font-size:15px}
+.extra a{color:var(--dim)}
+@media (max-width:520px){a.plan{grid-template-columns:80px 1fr}}
+</style>
+</head>
+<body>
+<main>
+  <h1>Furniture plans</h1>
+  <p class="lede">Build drawings for the carpenter and welder. Open a plan on your phone to rotate the model and read every measurement.</p>
+  <div class="plans">
+    <a class="plan" href="/cabinet">
+      <svg viewBox="0 0 64 120" aria-hidden="true"><rect x="4" y="60" width="56" height="56" fill="var(--wood)" stroke="var(--ink)"/><line x1="32" y1="62" x2="32" y2="114" stroke="var(--ink)"/>
+        <g stroke="var(--ink)" stroke-width="3" fill="none"><path d="M5 60V4H59V60M22 60V20M5 20H59M5 4H59"/></g><rect x="30" y="30" width="22" height="30" fill="none" stroke="var(--ink)" stroke-dasharray="3 2"/></svg>
+      <div><h2>PC side cabinet with open rack</h2><p>MDF cabinet at desk height, steel rack above for the PC, drives and display. 3D model, drawings, cut list.</p>
+        <p class="size">32 × 24 × 72″</p></div>
+    </a>
+    <a class="plan" href="/sofa-table">
+      <svg viewBox="0 0 64 40" aria-hidden="true"><rect x="4" y="8" width="56" height="14" fill="var(--wood)" stroke="var(--ink)"/><rect x="8" y="12" width="23" height="7" fill="var(--bg)" stroke="var(--ink)" stroke-width=".6"/><rect x="33" y="12" width="23" height="7" fill="var(--bg)" stroke="var(--ink)" stroke-width=".6"/>
+        <path d="M10 22l-3 14M54 22l3 14" stroke="var(--ink)" stroke-width="3"/></svg>
+      <div><h2>Sofa table, doors and bedroom layout</h2><p>Two-compartment sofa table, door panels, sheet cutting plan and bedroom floor plan.</p>
+        <p class="size">47 × 24 × 16½″</p></div>
+    </a>
+  </div>
+  <p class="extra">Printable sofa table sheet: <a href="/sofa-table/sofa-table-sheet.pdf">PDF</a> or <a href="/sofa-table/sofa-table-sheet.png">image</a>.</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sofa table, doors and bedroom drawing sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ECEFE8; --sheet:#F6F7F2; --ink:#22282A; --soft:#5E6865; --rule:#AEB6B0;
+  --pencil:#2C58A0; --board:#E6D3AE; --board-top:#EFE0C2; --board-end:#D6BE92; --edge:#CBB184;
+  --inner:#C9AE80; --inner2:#B99B6A; --void:#DCE0D8; --leg:#161819; --clash:#B3372C;
+  --room:#FBFBF8; --legline:#161819; --gun:#CFD9E8; --gun2:#B7C4D8; --gun3:#A3B2CA; --furn:#E4E8F0; --wall:#2A2E30;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --paper:#15191B; --sheet:#1D2225; --ink:#DCE1DC; --soft:#9AA49F; --rule:#3E474A;
+  --pencil:#7FA6E8; --board:#9C8762; --board-top:#AE9870; --board-end:#8A7552; --edge:#7E6A48;
+  --inner:#6F5E40; --inner2:#5E4F35; --void:#262C2F; --leg:#050606; --clash:#E0675A;
+  --room:#20262A; --legline:#7C868A; --gun:#44546E; --gun2:#3A4960; --gun3:#323F54; --furn:#2C3440; --wall:#C9CFCB;}}
+:root[data-theme="dark"]{
+  --paper:#15191B; --sheet:#1D2225; --ink:#DCE1DC; --soft:#9AA49F; --rule:#3E474A;
+  --pencil:#7FA6E8; --board:#9C8762; --board-top:#AE9870; --board-end:#8A7552; --edge:#7E6A48;
+  --inner:#6F5E40; --inner2:#5E4F35; --void:#262C2F; --leg:#050606; --clash:#E0675A;
+  --room:#20262A; --legline:#7C868A; --gun:#44546E; --gun2:#3A4960; --gun3:#323F54; --furn:#2C3440; --wall:#C9CFCB;}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.5 Barlow,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.sheet{max-width:1500px;margin:18px auto;background:var(--sheet);border:2px solid var(--ink);outline:1px solid var(--ink);outline-offset:5px;
+  display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-areas:"iso iso floor" "front plan sect" "cutsheet gun gun" "cut notes title";}
+.v{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:14px 16px 10px;min-width:0;display:flex;flex-direction:column}
+.v svg{width:100%;height:auto;display:block;flex:1;max-height:620px}
+.v{justify-content:space-between}
+.cap{display:flex;align-items:baseline;gap:10px;margin-top:6px;font-family:"Barlow Condensed","Arial Narrow",sans-serif}
+.cap b{display:inline-grid;place-items:center;width:26px;height:26px;border:1.5px solid var(--ink);border-radius:50%;font-weight:600;font-size:14px}
+.cap span{font-size:18px;font-weight:600}
+.cap em{font-style:normal;color:var(--soft);font-size:14px;margin-left:auto}
+.iso{grid-area:iso}.floor{grid-area:floor}.front{grid-area:front}.plan{grid-area:plan}.sect{grid-area:sect}
+.cutsheet{grid-area:cutsheet}.cutsheet svg{max-height:900px}.gun{grid-area:gun;border-right:0;justify-content:flex-start}.gun svg{max-height:260px;margin:6px 0 10px}
+.cut{grid-area:cut;justify-content:flex-start}.notes{grid-area:notes;justify-content:flex-start}.title{grid-area:title;border-right:0}
+.floor,.title{border-right:0}
+.front{justify-content:center}
+h2{font:600 18px/1.2 "Barlow Condensed","Arial Narrow",sans-serif;margin:0 0 8px}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:5px 6px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:600;font-size:14px;color:var(--soft)}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol{margin:0;padding-left:20px;font-size:14px}
+ol li{margin-bottom:6px;max-width:62ch}
+.flag{color:var(--clash);font-weight:600}
+.title{display:grid;grid-template-rows:auto 1fr auto;gap:10px}
+.title .big{font:600 30px/1.05 "Barlow Condensed","Arial Narrow",sans-serif;margin:0}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:3px 14px;font-size:14px}
+.kv dt{color:var(--soft)} .kv dd{margin:0}
+.legend{display:flex;flex-wrap:wrap;gap:10px 16px;font-size:13px;color:var(--soft)}
+.legend i{display:inline-block;width:14px;height:10px;margin-right:6px;vertical-align:-1px;border:1px solid var(--ink)}
+/* svg classes */
+.shadow{fill:#000;opacity:.08}
+.leg{fill:var(--leg);stroke:var(--legline);stroke-width:.12}
+.face-top{fill:var(--board-top);stroke:var(--ink);stroke-width:.12}
+.face-end{fill:var(--board-end);stroke:var(--ink);stroke-width:.12}
+.face-front{fill:var(--edge);stroke:var(--ink);stroke-width:.12}
+.face-inner-bottom{fill:var(--inner)}
+.face-inner-wall{fill:var(--inner2)}
+.void{fill:var(--void)}
+.board{fill:var(--board);stroke:var(--ink);stroke-width:.14}
+.cutboard{fill:var(--board);stroke:var(--ink);stroke-width:.16}
+.beyond{fill:var(--board-end);stroke:var(--ink);stroke-width:.08}
+.v .void{stroke:var(--ink);stroke-width:.1}
+.floor line.floor,line.floor{stroke:var(--ink);stroke-width:.2}
+.hidden{fill:none;stroke:var(--ink);stroke-width:.1;stroke-dasharray:.7 .45}
+.cutline{stroke:var(--pencil);stroke-width:.15;stroke-dasharray:2 .6 .4 .6}
+.secta{fill:var(--pencil);font-family:"Barlow Condensed",sans-serif;font-weight:600}
+.dim,.ext{stroke:var(--pencil);stroke-width:.08}
+.ext{opacity:.55}
+.tick{stroke:var(--pencil);stroke-width:.16}
+.dt{fill:var(--pencil);font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:500}
+.note{fill:var(--soft);font-family:"Barlow Condensed","Arial Narrow",sans-serif}
+.floor .dim,.floor .ext{stroke-width:.3}.floor .tick{stroke-width:.6}
+.room{fill:var(--room)}
+.wall{fill:var(--wall)}
+.glass{fill:var(--room);stroke:var(--wall);stroke-width:.5}
+.glassl{stroke:var(--pencil);stroke-width:.6}
+.leaf{stroke:var(--ink);stroke-width:1.4}
+.swing{fill:none;stroke:var(--ink);stroke-width:.4;stroke-dasharray:2 1.4}
+.swing.alt{stroke:var(--soft);stroke-dasharray:1 1.2}
+.furn{fill:var(--furn);stroke:var(--ink);stroke-width:.45}
+.thin{fill:none;stroke:var(--soft);stroke-width:.35}
+.screen{fill:var(--ink)}
+.lab{fill:var(--ink);font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:600}
+.small{fill:var(--soft);font-family:"Barlow Condensed","Arial Narrow",sans-serif}
+.clash{fill:var(--clash);fill-opacity:.14;stroke:var(--clash);stroke-width:.6;stroke-dasharray:2 1}
+.clashl{fill:var(--clash);font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:600}
+.raw{fill:none;stroke:var(--ink);stroke-width:.15;stroke-dasharray:1 .6}
+.trim{fill:var(--clash);opacity:.28}
+.trimt{fill:var(--clash);font-family:"Barlow Condensed",sans-serif;font-weight:600}
+.usable{fill:var(--void);stroke:var(--ink);stroke-width:.2}
+.pc{stroke:var(--ink);stroke-width:.15}.pc.t{fill:var(--board)}.pc.g{fill:var(--gun)}.pc.d{fill:var(--gun)}
+.cutmid{stroke:var(--clash);stroke-width:.25;stroke-dasharray:1.2 .6}
+.off{fill:var(--void);stroke:var(--ink);stroke-width:.12;stroke-dasharray:.8 .5}
+.pcd{fill:var(--pencil);font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:500}
+.gunghost{fill:var(--gun);fill-opacity:.5;stroke:var(--pencil);stroke-width:.12;stroke-dasharray:.6 .4}
+.gunt{fill:var(--pencil);font-family:"Barlow Condensed",sans-serif}
+.gtop{fill:var(--gun);stroke:var(--ink);stroke-width:.1}.gend{fill:var(--gun3);stroke:var(--ink);stroke-width:.1}.gfront{fill:var(--gun2);stroke:var(--ink);stroke-width:.1}
+.lidline{stroke:var(--ink);stroke-width:.08}.hasp{fill:var(--ink)}
+.steps{margin:10px 0 0;padding-left:20px;font-size:14px}
+.steps li{break-inside:avoid;margin-bottom:5px}
+@media (max-width:1100px){
+  .sheet{grid-template-columns:1fr 1fr;grid-template-areas:"iso iso" "floor floor" "front front" "plan sect" "cutsheet cutsheet" "gun gun" "cut cut" "notes title";margin:10px}
+  .floor{border-right:0}
+}
+@media (max-width:680px){ .steps{columns:1}
+  .sheet{grid-template-columns:1fr;grid-template-areas:"iso" "floor" "front" "plan" "sect" "cutsheet" "gun" "cut" "notes" "title";outline:none;border-width:1px}
+  .v{border-right:0}
+}
+@media print{body{background:#fff}.sheet{margin:0;max-width:none}}
+</style>
+</head>
+<body>
+<main class="sheet">
+
+<section class="v iso">
+  <svg viewBox="-25.7 -12.9 77.0 62.0" role="img" aria-label="Isometric view of the sofa table"><polygon class="shadow" points="-0.866,7.583 43.301,33.083 20.785,46.083 -23.383,20.583"/><polygon class="leg" points="-0.416,2.714 -0.293,10.816 0.466,10.849 1.282,2.786"/><polygon class="leg" points="35.104,23.406 37.299,32.602 38.046,32.463 36.776,23.094"/><polygon class="face-top" points="0.000,-7.417 40.703,16.083 19.919,28.083 -20.785,4.583"/><polygon class="face-end" points="40.703,23.500 19.919,35.500 19.919,28.083 40.703,16.083"/><defs><clipPath id="op0"><polygon points="-20.171,11.646 -0.740,22.864 -0.740,16.864 -20.171,5.646"/></clipPath><clipPath id="op1"><polygon points="-0.126,23.219 19.305,34.437 19.305,28.437 -0.126,17.219"/></clipPath></defs><g clip-path="url(#op0)"><polygon class="void" points="-20.171,11.646 -0.740,22.864 -0.740,16.864 -20.171,5.646"/><polygon class="face-inner-bottom" points="0.614,-0.354 20.045,10.864 -0.740,22.864 -20.171,11.646"/><polygon class="face-inner-wall" points="0.614,-0.354 -20.171,11.646 -20.171,5.646 0.614,-6.354"/></g><g clip-path="url(#op1)"><polygon class="void" points="-0.126,23.219 19.305,34.437 19.305,28.437 -0.126,17.219"/><polygon class="face-inner-bottom" points="20.658,11.219 40.089,22.437 19.305,34.437 -0.126,23.219"/><polygon class="face-inner-wall" points="20.658,11.219 -0.126,23.219 -0.126,17.219 20.658,5.219"/></g><path class="face-front" fill-rule="evenodd" d="M-20.785,12.000 L19.919,35.500 L19.919,28.083 L-20.785,4.583 Z M-20.171,11.646 L-0.740,22.864 L-0.740,16.864 L-20.171,5.646 Z M-0.126,23.219 L19.305,34.437 L19.305,28.437 L-0.126,17.219 Z"/><polygon class="leg" points="-16.856,12.087 -18.126,21.060 -17.381,21.205 -15.187,12.413"/><polygon class="leg" points="18.636,32.779 19.452,42.846 20.212,42.820 20.335,32.721"/><text class="lab" x="9.96" y="10.33" font-size="1.8" text-anchor="middle">47″ top, 18 mm MDF</text><text class="lab" x="32.51" y="20.88" font-size="1.8" text-anchor="start">24″</text><text class="note" x="-10.46" y="11.25" font-size="1.4" text-anchor="middle"></text></svg>
+  <div class="cap"><b>1</b><span>Sofa table, isometric</span><em>two equal open compartments, four splayed black legs</em></div>
+</section>
+
+<section class="v floor">
+  <svg viewBox="-24 -68 202 218" role="img" aria-label="Bedroom floor plan with the sofa table placed"><rect class="room" x="0" y="0" width="168" height="138"/><path class="wall" fill-rule="evenodd" d="M-5,-5 H173 V143 H-5 Z M0,0 H168 V138 H0 Z"/><rect class="room" x="0.5" y="-5.5" width="39" height="6"/><rect class="glass" x="78" y="-5" width="72" height="5"/><line class="glassl" x1="78" y1="-2.5" x2="150" y2="-2.5"/><line class="leaf" x1="0" y1="0" x2="0" y2="39"/><path class="swing" d="M39,0 A39,39 0 0 1 0,39"/><path class="swing alt" d="M39,-5 A39,39 0 0 0 0,-44"/><text class="lab" x="5" y="20" font-size="4.199999999999999">Door 3′-3″</text><text class="small" x="5" y="26" font-size="3.472">swings in</text><text class="small" x="44" y="-27" font-size="3.472">dotted: swing reversed outward (recommended)</text><rect class="furn" x="42" y="0" width="36" height="24"/><text class="lab" x="60.0" y="11.5" font-size="5.6" text-anchor="middle">Closet</text><text class="small" x="60.0" y="16.3" font-size="4.032" text-anchor="middle">3 × 2 ft</text><rect class="furn" x="78" y="0" width="72" height="24"/><text class="lab" x="114.0" y="11.5" font-size="5.6" text-anchor="middle">Computer table</text><text class="small" x="114.0" y="16.3" font-size="4.032" text-anchor="middle">6 × 2 ft</text><rect class="screen" x="82" y="3" width="30" height="2.4"/><rect class="furn" x="150" y="0" width="18" height="24"/><text class="lab" x="159.0" y="11.5" font-size="5.6" text-anchor="middle">Shelf</text><circle class="furn" cx="120" cy="37" r="9"/><text class="small" x="120" y="38.5" font-size="3.9199999999999995" text-anchor="middle">Chair</text><rect class="furn" x="0" y="54" width="30" height="84"/><text class="lab" x="15.0" y="95.5" font-size="5.6" text-anchor="middle">Sofa</text><text class="small" x="15.0" y="100.3" font-size="4.032" text-anchor="middle">7 × 2½ ft</text><line class="thin" x1="7" y1="56" x2="7" y2="136"/><rect class="furn" x="60" y="60" width="72" height="78"/><text class="lab" x="96.0" y="98.5" font-size="5.6" text-anchor="middle">Bed</text><text class="small" x="96.0" y="103.3" font-size="4.032" text-anchor="middle">6 × 6½ ft</text><rect class="thin" x="64" y="124" width="30" height="9" rx="2"/><rect class="thin" x="98" y="124" width="30" height="9" rx="2"/><rect class="furn" x="132" y="120" width="36" height="18"/><text class="lab" x="150.0" y="128.5" font-size="5.6" text-anchor="middle">Dressing</text><text class="small" x="150.0" y="133.3" font-size="4.032" text-anchor="middle">3 × 1½ ft</text><circle class="furn" cx="150" cy="106" r="6"/><rect class="clash" x="30" y="72" width="24" height="47"/><text class="clashl" x="42" y="94" font-size="4.367999999999999" text-anchor="middle" transform="rotate(-90 42 96)">Sofa table 47″ × 24″</text><text class="clashl" x="58.3" y="96" font-size="3.36" text-anchor="middle" transform="rotate(-90 58.3 96)">only 6″ left to walk</text><line class="ext" x1="0" y1="-5" x2="0" y2="-56.96"/><line class="ext" x1="168" y1="-5" x2="168" y2="-56.96"/><line class="dim" x1="0" y1="-55" x2="168" y2="-55"/><line class="tick" x1="-1.9599999999999997" y1="-53.04" x2="1.9599999999999997" y2="-56.96"/><line class="tick" x1="166.04" y1="-53.04" x2="169.96" y2="-56.96"/><text class="dt" x="84.0" y="-56.96" font-size="5.6" text-anchor="middle">14′-0″</text><line class="ext" x1="-5" y1="0" x2="-15.959999999999999" y2="0"/><line class="ext" x1="-5" y1="138" x2="-15.959999999999999" y2="138"/><line class="dim" x1="-14" y1="0" x2="-14" y2="138"/><line class="tick" x1="-15.959999999999999" y1="1.9599999999999997" x2="-12.040000000000001" y2="-1.9599999999999997"/><line class="tick" x1="-15.959999999999999" y1="139.96" x2="-12.040000000000001" y2="136.04"/><text class="dt" x="-16.24" y="69.0" font-size="5.6" text-anchor="middle" transform="rotate(-90 -16.24 69.0)">11′-6″</text><line class="dim" x1="30" y1="64" x2="60" y2="64"/><line class="tick" x1="28.628" y1="65.372" x2="31.372" y2="62.628"/><line class="tick" x1="58.628" y1="65.372" x2="61.372" y2="62.628"/><text class="dt" x="45.0" y="62.628" font-size="3.9199999999999995" text-anchor="middle"></text><text class="small" x="45" y="61" font-size="3.9199999999999995" text-anchor="middle">2′-6″ aisle</text><line class="dim" x1="132" y1="90" x2="168" y2="90"/><line class="tick" x1="130.432" y1="91.568" x2="133.568" y2="88.432"/><line class="tick" x1="166.432" y1="91.568" x2="169.568" y2="88.432"/><text class="dt" x="150.0" y="88.432" font-size="4.4799999999999995" text-anchor="middle">3′-0″</text><line class="dim" x1="64" y1="24" x2="64" y2="60"/><line class="tick" x1="62.432" y1="25.568" x2="65.568" y2="22.432"/><line class="tick" x1="62.432" y1="61.568" x2="65.568" y2="58.432"/><text class="dt" x="68.928" y="42.0" font-size="4.4799999999999995" text-anchor="middle" transform="rotate(-90 68.928 42.0)">3′-0″</text></svg>
+  <div class="cap"><b>2</b><span>Bedroom floor plan, 14′ × 11′-6″</span><em>door, furniture and table position</em></div>
+</section>
+
+<section class="v front">
+  <svg viewBox="-10 -23.0 69.0 25.5" role="img" aria-label="Front elevation"><line class="floor" x1="-6" y1="0" x2="53.0" y2="0"/><polygon class="leg" points="2.200,-9.083 3.800,-9.083 2.200,0.000 1.400,0.000"/><polygon class="leg" points="43.200,-9.083 44.800,-9.083 45.600,0.000 44.800,0.000"/><rect class="board" x="0" y="-16.5" width="47.0" height="7.417322834645669"/><rect class="void" x="0.7086614173228347" y="-15.791338582677165" width="22.437007874015748" height="6.0"/><rect class="void" x="23.85433070866142" y="-15.791338582677165" width="22.437007874015745" height="6.0"/><line class="ext" x1="0" y1="-16.5" x2="0" y2="-20.4"/><line class="ext" x1="47.0" y1="-16.5" x2="47.0" y2="-20.4"/><line class="dim" x1="0" y1="-19.7" x2="47.0" y2="-19.7"/><line class="tick" x1="-0.7" y1="-19.0" x2="0.7" y2="-20.4"/><line class="tick" x1="46.3" y1="-19.0" x2="47.7" y2="-20.4"/><text class="dt" x="23.5" y="-20.4" font-size="2.0" text-anchor="middle">47″  (1194 mm)</text><line class="ext" x1="0.7086614173228347" y1="-9.08267716535433" x2="0.7086614173228347" y2="-6.25267716535433"/><line class="ext" x1="23.14566929133858" y1="-9.08267716535433" x2="23.14566929133858" y2="-6.25267716535433"/><line class="dim" x1="0.7086614173228347" y1="-6.8826771653543295" x2="23.14566929133858" y2="-6.8826771653543295"/><line class="tick" x1="0.07866141732283471" y1="-6.25267716535433" x2="1.3386614173228346" y2="-7.512677165354329"/><line class="tick" x1="22.515669291338583" y1="-6.25267716535433" x2="23.77566929133858" y2="-7.512677165354329"/><text class="dt" x="11.927165354330707" y="-4.99267716535433" font-size="1.8" text-anchor="middle">22 7/16″ clear</text><line class="ext" x1="23.85433070866142" y1="-9.08267716535433" x2="23.85433070866142" y2="-6.25267716535433"/><line class="ext" x1="46.29133858267716" y1="-9.08267716535433" x2="46.29133858267716" y2="-6.25267716535433"/><line class="dim" x1="23.85433070866142" y1="-6.8826771653543295" x2="46.29133858267716" y2="-6.8826771653543295"/><line class="tick" x1="23.22433070866142" y1="-6.25267716535433" x2="24.484330708661417" y2="-7.512677165354329"/><line class="tick" x1="45.66133858267716" y1="-6.25267716535433" x2="46.921338582677166" y2="-7.512677165354329"/><text class="dt" x="35.07283464566929" y="-4.99267716535433" font-size="1.8" text-anchor="middle">22 7/16″ clear</text><line class="ext" x1="47.0" y1="-15.791338582677165" x2="50.63" y2="-15.791338582677165"/><line class="ext" x1="47.0" y1="-9.791338582677165" x2="50.63" y2="-9.791338582677165"/><line class="dim" x1="50.0" y1="-15.791338582677165" x2="50.0" y2="-9.791338582677165"/><line class="tick" x1="49.37" y1="-15.161338582677164" x2="50.63" y2="-16.421338582677166"/><line class="tick" x1="49.37" y1="-9.161338582677164" x2="50.63" y2="-10.421338582677166"/><text class="dt" x="51.98" y="-12.791338582677165" font-size="1.8" text-anchor="middle" transform="rotate(-90 51.98 -12.791338582677165)">6″ clear</text><line class="ext" x1="47.0" y1="-16.5" x2="55.13" y2="-16.5"/><line class="ext" x1="47.0" y1="0" x2="55.13" y2="0"/><line class="dim" x1="54.5" y1="-16.5" x2="54.5" y2="0"/><line class="tick" x1="53.87" y1="-15.87" x2="55.13" y2="-17.13"/><line class="tick" x1="53.87" y1="0.63" x2="55.13" y2="-0.63"/><text class="dt" x="56.48" y="-8.25" font-size="1.8" text-anchor="middle" transform="rotate(-90 56.48 -8.25)">16 1/2″ overall</text><line class="ext" x1="0" y1="-16.5" x2="-3.63" y2="-16.5"/><line class="ext" x1="0" y1="-9.08267716535433" x2="-3.63" y2="-9.08267716535433"/><line class="dim" x1="-3" y1="-16.5" x2="-3" y2="-9.08267716535433"/><line class="tick" x1="-3.63" y1="-15.87" x2="-2.37" y2="-17.13"/><line class="tick" x1="-3.63" y1="-8.452677165354329" x2="-2.37" y2="-9.71267716535433"/><text class="dt" x="-3.72" y="-12.791338582677165" font-size="1.8" text-anchor="middle" transform="rotate(-90 -3.72 -12.791338582677165)">7 7/16″</text><line class="ext" x1="0" y1="-9.08267716535433" x2="-3.63" y2="-9.08267716535433"/><line class="ext" x1="0" y1="0" x2="-3.63" y2="0"/><line class="dim" x1="-3" y1="-9.08267716535433" x2="-3" y2="0"/><line class="tick" x1="-3.63" y1="-8.452677165354329" x2="-2.37" y2="-9.71267716535433"/><line class="tick" x1="-3.63" y1="0.63" x2="-2.37" y2="-0.63"/><text class="dt" x="-3.72" y="-4.541338582677165" font-size="1.8" text-anchor="middle" transform="rotate(-90 -3.72 -4.541338582677165)">≈9 1/16″ leg</text></svg>
+  <div class="cap"><b>3</b><span>Front elevation</span><em>1 : 8 approx.</em></div>
+</section>
+
+<section class="v plan">
+  <svg viewBox="-7 -6.5 62.0 35.0" role="img" aria-label="Top plan of the sofa table"><rect class="board" x="0" y="0" width="47.0" height="24.0"/><line class="hidden" x1="0.7086614173228347" y1="0" x2="0.7086614173228347" y2="24.0"/><line class="hidden" x1="46.29133858267716" y1="0" x2="46.29133858267716" y2="24.0"/><line class="hidden" x1="23.14566929133858" y1="0" x2="23.14566929133858" y2="24.0"/><line class="hidden" x1="23.85433070866142" y1="0" x2="23.85433070866142" y2="24.0"/><circle class="hidden" cx="3.0" cy="2.5" r="0.8"/><circle class="hidden" cx="3.0" cy="21.5" r="0.8"/><circle class="hidden" cx="44.0" cy="2.5" r="0.8"/><circle class="hidden" cx="44.0" cy="21.5" r="0.8"/><line class="ext" x1="0" y1="0" x2="0" y2="-3.665"/><line class="ext" x1="47.0" y1="0" x2="47.0" y2="-3.665"/><line class="dim" x1="0" y1="-3" x2="47.0" y2="-3"/><line class="tick" x1="-0.6649999999999999" y1="-2.335" x2="0.6649999999999999" y2="-3.665"/><line class="tick" x1="46.335" y1="-2.335" x2="47.665" y2="-3.665"/><text class="dt" x="23.5" y="-3.665" font-size="1.9" text-anchor="middle">47″</text><line class="ext" x1="47.0" y1="0" x2="50.665" y2="0"/><line class="ext" x1="47.0" y1="24.0" x2="50.665" y2="24.0"/><line class="dim" x1="50.0" y1="0" x2="50.0" y2="24.0"/><line class="tick" x1="49.335" y1="0.6649999999999999" x2="50.665" y2="-0.6649999999999999"/><line class="tick" x1="49.335" y1="24.665" x2="50.665" y2="23.335"/><text class="dt" x="52.09" y="12.0" font-size="1.9" text-anchor="middle" transform="rotate(-90 52.09 12.0)">24″  (610 mm)</text><line class="ext" x1="0" y1="24.0" x2="0" y2="26.965249999999997"/><line class="ext" x1="3.0" y1="24.0" x2="3.0" y2="26.965249999999997"/><line class="dim" x1="0" y1="26.4" x2="3.0" y2="26.4"/><line class="tick" x1="-0.5652499999999999" y1="26.965249999999997" x2="0.5652499999999999" y2="25.83475"/><line class="tick" x1="2.43475" y1="26.965249999999997" x2="3.56525" y2="25.83475"/><text class="dt" x="1.5" y="28.09575" font-size="1.615" text-anchor="middle">3″</text><line class="ext" x1="0" y1="21.5" x2="-3.06525" y2="21.5"/><line class="ext" x1="0" y1="24.0" x2="-3.06525" y2="24.0"/><line class="dim" x1="-2.5" y1="21.5" x2="-2.5" y2="24.0"/><line class="tick" x1="-3.06525" y1="22.06525" x2="-1.9347500000000002" y2="20.93475"/><line class="tick" x1="-3.06525" y1="24.56525" x2="-1.9347500000000002" y2="23.43475"/><text class="dt" x="-3.146" y="22.75" font-size="1.615" text-anchor="middle" transform="rotate(-90 -3.146 22.75)">2½″</text><text class="note" x="23.5" y="12.5" font-size="1.615" text-anchor="middle">dashed = end panels, divider, leg plates below</text><text class="secta" x="11.92716535433071" y="-0.9" font-size="1.9" text-anchor="middle">A</text><line class="cutline" x1="11.92716535433071" y1="-2" x2="11.92716535433071" y2="26.0"/></svg>
+  <div class="cap"><b>4</b><span>Top plan</span><em>hidden lines dashed</em></div>
+</section>
+
+<section class="v sect">
+  <svg viewBox="-8 -22.5 39.0 25.5" role="img" aria-label="Section A-A through a compartment"><line class="floor" x1="-5" y1="0" x2="29.0" y2="0"/><polygon class="leg" points="1.700,-9.083 3.300,-9.083 2.100,0.000 1.300,0.000"/><polygon class="leg" points="20.700,-9.083 22.300,-9.083 22.700,0.000 21.900,0.000"/><rect class="beyond" x="0" y="-15.791338582677165" width="24.0" height="6.0"/><rect class="cutboard" x="0" y="-16.5" width="24.0" height="0.7086614173228347"/><rect class="cutboard" x="0" y="-9.791338582677165" width="24.0" height="0.7086614173228347"/><text class="note" x="12.0" y="-12.291338582677165" font-size="1.0625" text-anchor="middle">end panel beyond</text><line class="ext" x1="0" y1="-16.5" x2="0" y2="-19.9375"/><line class="ext" x1="24.0" y1="-16.5" x2="24.0" y2="-19.9375"/><line class="dim" x1="0" y1="-19.5" x2="24.0" y2="-19.5"/><line class="tick" x1="-0.4375" y1="-19.0625" x2="0.4375" y2="-19.9375"/><line class="tick" x1="23.5625" y1="-19.0625" x2="24.4375" y2="-19.9375"/><text class="dt" x="12.0" y="-19.9375" font-size="1.25" text-anchor="middle">24″</text><line class="ext" x1="0" y1="-16.5" x2="-2.50625" y2="-16.5"/><line class="ext" x1="0" y1="-15.791338582677165" x2="-2.50625" y2="-15.791338582677165"/><line class="dim" x1="-2.2" y1="-16.5" x2="-2.2" y2="-15.791338582677165"/><line class="tick" x1="-2.50625" y1="-16.19375" x2="-1.8937500000000003" y2="-16.80625"/><line class="tick" x1="-2.50625" y1="-15.485088582677164" x2="-1.8937500000000003" y2="-16.097588582677165"/><text class="dt" x="-2.5500000000000003" y="-16.14566929133858" font-size="0.875" text-anchor="middle" transform="rotate(-90 -2.5500000000000003 -16.14566929133858)">18 mm</text><line class="ext" x1="24.0" y1="-15.791338582677165" x2="26.950000000000003" y2="-15.791338582677165"/><line class="ext" x1="24.0" y1="-9.791338582677165" x2="26.950000000000003" y2="-9.791338582677165"/><line class="dim" x1="26.6" y1="-15.791338582677165" x2="26.6" y2="-9.791338582677165"/><line class="tick" x1="26.25" y1="-15.441338582677165" x2="26.950000000000003" y2="-16.141338582677164"/><line class="tick" x1="26.25" y1="-9.441338582677165" x2="26.950000000000003" y2="-10.141338582677164"/><text class="dt" x="27.700000000000003" y="-12.791338582677165" font-size="1.0" text-anchor="middle" transform="rotate(-90 27.700000000000003 -12.791338582677165)">6″</text><text class="note" x="0" y="2" font-size="1.125">front (open)</text><text class="note" x="24.0" y="2" font-size="1.125" text-anchor="end">back (open)</text></svg>
+  <div class="cap"><b>5</b><span>Section A–A</span><em>through one compartment</em></div>
+</section>
+
+
+<section class="v cutsheet">
+  <svg viewBox="-17 -14 72.0 117.0" role="img" aria-label="Cutting layout on one sheet stood upright"><rect class="raw" x="-1" y="-1" width="48" height="96"/><rect class="trim" x="-1" y="-1" width="48" height="1"/><rect class="trim" x="-1" y="-1" width="1" height="96"/><rect class="usable" x="0" y="0" width="47.0" height="95.0"/><rect class="pc t" x="0" y="0" width="47" height="24"/><text class="lab" x="23.5" y="11.2" font-size="2.21" text-anchor="middle">Top</text><text class="pcd" x="23.5" y="13.5" font-size="1.7" text-anchor="middle">47 × 24″</text><text class="small" x="23.5" y="15.5" font-size="1.4449999999999998" text-anchor="middle">3′-11″ × 2′-0″</text><rect class="pc t" x="0" y="24.125" width="45.5625" height="24"/><text class="lab" x="22.78125" y="35.325" font-size="2.21" text-anchor="middle">Bottom</text><text class="pcd" x="22.78125" y="37.625" font-size="1.7" text-anchor="middle">45 9/16 × 24″</text><text class="small" x="22.78125" y="39.625" font-size="1.4449999999999998" text-anchor="middle">3′-9 9/16″ × 2′-0″</text><rect class="pc d" x="0" y="48.25" width="40.0" height="17.6875"/><text class="lab" x="20.0" y="56.29375" font-size="2.21" text-anchor="middle">Door 1</text><text class="pcd" x="20.0" y="58.59375" font-size="1.7" text-anchor="middle">17 11/16 × 40″ door</text><rect class="pc d" x="0" y="66.0625" width="40.0" height="17.6875"/><text class="lab" x="20.0" y="74.10625" font-size="2.21" text-anchor="middle">Door 2</text><text class="pcd" x="20.0" y="76.40625" font-size="1.7" text-anchor="middle">17 11/16 × 40″ door</text><rect class="pc t" x="40.125" y="48.25" width="6.6875" height="24"/><text class="pcd" x="43.46875" y="60.75" font-size="1.36" text-anchor="middle" transform="rotate(-90 43.46875 60.25)">End panel  24 × 6 11/16″</text><rect class="pc t" x="0" y="83.875" width="24" height="6.6875"/><text class="pcd" x="12.0" y="87.76875" font-size="1.36" text-anchor="middle">End panel  24 × 6 11/16″</text><rect class="pc t" x="24.125" y="83.875" width="22.875" height="6"/><text class="pcd" x="35.5625" y="87.425" font-size="1.36" text-anchor="middle">Divider  22 7/8 × 6″</text><line class="cutmid" x1="0" y1="66.0" x2="40.0" y2="66.0"/><text class="small" x="20.0" y="65.3375" font-size="1.275" text-anchor="middle">cut here: the saw cut becomes the gap between the doors</text><rect class="off" x="45.6875" y="24.125" width="1.3125" height="24"/><rect class="off" x="40.125" y="72.375" width="6.875" height="11.375"/><rect class="off" x="0" y="90.6875" width="47.0" height="4.3125"/><text class="small" x="23.5" y="93.7" font-size="1.36" text-anchor="middle">scrap strip  47 × 4 5/16″</text><text class="trimt" x="23.5" y="-1.8" font-size="1.275" text-anchor="middle">1″ trimmed to straighten</text><line class="ext" x1="0" y1="-1" x2="0" y2="-6.095"/><line class="ext" x1="47.0" y1="-1" x2="47.0" y2="-6.095"/><line class="dim" x1="0" y1="-5.5" x2="47.0" y2="-5.5"/><line class="tick" x1="-0.595" y1="-4.905" x2="0.595" y2="-6.095"/><line class="tick" x1="46.405" y1="-4.905" x2="47.595" y2="-6.095"/><text class="dt" x="23.5" y="-6.095" font-size="1.7" text-anchor="middle">47″ usable (3′-11″)</text><line class="ext" x1="-1" y1="-1" x2="-1" y2="-10.595"/><line class="ext" x1="47.0" y1="-1" x2="47.0" y2="-10.595"/><line class="dim" x1="-1" y1="-10" x2="47.0" y2="-10"/><line class="tick" x1="-1.595" y1="-9.405" x2="-0.405" y2="-10.595"/><line class="tick" x1="46.405" y1="-9.405" x2="47.595" y2="-10.595"/><text class="dt" x="23.0" y="-10.595" font-size="1.7" text-anchor="middle">48″ raw (4′-0″)</text><line class="ext" x1="0" y1="95.0" x2="0" y2="98.595"/><line class="ext" x1="40.0" y1="95.0" x2="40.0" y2="98.595"/><line class="dim" x1="0" y1="98.0" x2="40.0" y2="98.0"/><line class="tick" x1="-0.595" y1="98.595" x2="0.595" y2="97.405"/><line class="tick" x1="39.405" y1="98.595" x2="40.595" y2="97.405"/><text class="dt" x="20.0" y="99.785" font-size="1.7" text-anchor="middle">40″ (3′-4″)</text><line class="ext" x1="-1" y1="0" x2="-4.595" y2="0"/><line class="ext" x1="-1" y1="24" x2="-4.595" y2="24"/><line class="dim" x1="-4" y1="0" x2="-4" y2="24"/><line class="tick" x1="-4.595" y1="0.595" x2="-3.4050000000000002" y2="-0.595"/><line class="tick" x1="-4.595" y1="24.595" x2="-3.4050000000000002" y2="23.405"/><text class="dt" x="-4.68" y="12.0" font-size="1.7" text-anchor="middle" transform="rotate(-90 -4.68 12.0)">24″</text><line class="ext" x1="-1" y1="24.125" x2="-4.595" y2="24.125"/><line class="ext" x1="-1" y1="48.125" x2="-4.595" y2="48.125"/><line class="dim" x1="-4" y1="24.125" x2="-4" y2="48.125"/><line class="tick" x1="-4.595" y1="24.72" x2="-3.4050000000000002" y2="23.53"/><line class="tick" x1="-4.595" y1="48.72" x2="-3.4050000000000002" y2="47.53"/><text class="dt" x="-4.68" y="36.125" font-size="1.7" text-anchor="middle" transform="rotate(-90 -4.68 36.125)">24″</text><line class="ext" x1="-1" y1="48.25" x2="-4.595" y2="48.25"/><line class="ext" x1="-1" y1="83.75" x2="-4.595" y2="83.75"/><line class="dim" x1="-4" y1="48.25" x2="-4" y2="83.75"/><line class="tick" x1="-4.595" y1="48.845" x2="-3.4050000000000002" y2="47.655"/><line class="tick" x1="-4.595" y1="84.345" x2="-3.4050000000000002" y2="83.155"/><text class="dt" x="-4.68" y="66.0" font-size="1.7" text-anchor="middle" transform="rotate(-90 -4.68 66.0)">35½″ doors</text><line class="ext" x1="-1" y1="0" x2="-9.595" y2="0"/><line class="ext" x1="-1" y1="95.0" x2="-9.595" y2="95.0"/><line class="dim" x1="-9" y1="0" x2="-9" y2="95.0"/><line class="tick" x1="-9.595" y1="0.595" x2="-8.405" y2="-0.595"/><line class="tick" x1="-9.595" y1="95.595" x2="-8.405" y2="94.405"/><text class="dt" x="-9.68" y="47.5" font-size="1.7" text-anchor="middle" transform="rotate(-90 -9.68 47.5)">95″ usable (7′-11″)</text><line class="ext" x1="-1" y1="-1" x2="-14.095" y2="-1"/><line class="ext" x1="-1" y1="95.0" x2="-14.095" y2="95.0"/><line class="dim" x1="-13.5" y1="-1" x2="-13.5" y2="95.0"/><line class="tick" x1="-14.095" y1="-0.405" x2="-12.905" y2="-1.595"/><line class="tick" x1="-14.095" y1="95.595" x2="-12.905" y2="94.405"/><text class="dt" x="-14.18" y="47.0" font-size="1.7" text-anchor="middle" transform="rotate(-90 -14.18 47.0)">96″ raw (8′-0″)</text><line class="ext" x1="47.0" y1="0" x2="50.595" y2="0"/><line class="ext" x1="47.0" y1="48.125" x2="50.595" y2="48.125"/><line class="dim" x1="50.0" y1="0" x2="50.0" y2="48.125"/><line class="tick" x1="49.405" y1="0.595" x2="50.595" y2="-0.595"/><line class="tick" x1="49.405" y1="48.72" x2="50.595" y2="47.53"/><text class="dt" x="51.87" y="24.0625" font-size="1.7" text-anchor="middle" transform="rotate(-90 51.87 24.0625)">4′-0⅛″ table</text></svg>
+  <div class="cap"><b>6</b><span>Sheet 1, stood upright: table + doors</span><em>⅛″ saw cuts allowed</em></div>
+</section>
+
+<section class="v gun">
+  <h2>Can all three come out of one sheet? No.</h2>
+  <p style="margin:0 0 10px;max-width:70ch">After trimming, one sheet gives 47″ × 95″ = <strong>4,465 sq in</strong>. The three items need more than that before a single saw cut:</p>
+  <div class="tw"><table>
+    <thead><tr><th>Item</th><th>Parts</th><th>Area (sq in)</th></tr></thead>
+    <tbody>
+      <tr><td>Sofa table</td><td>top, bottom, 2 ends, divider</td><td class="n">2,722</td></tr>
+      <tr><td>Doors</td><td>35½ × 40″</td><td class="n">1,420</td></tr>
+      <tr><td>Gun box</td><td>only the two 47 × 6″ strips</td><td class="n">564</td></tr>
+      <tr><td><strong>Total</strong></td><td>still no back or ends for the gun box</td><td class="n"><strong>4,706</strong></td></tr>
+    </tbody>
+  </table></div>
+  <p style="margin:10px 0 0;max-width:70ch">That's about 240 sq in too much, so no layout can fit it. The table and doors fit together (left). The gun box needs a second sheet, which also leaves plenty for the dressing table later.</p>
+  <h2 style="margin-top:18px">Cutting order for sheet 1</h2>
+  <ol class="steps">
+    <li>Cutter trims 1″ off one long side and one end. Sheet is now 47″ wide × 95″ tall (3′-11″ × 7′-11″).</li>
+    <li>Cross-cut at 24″: table top, 47 × 24″.</li>
+    <li>Cross-cut the next 24″, then trim it to 45 9/16″ wide: table bottom.</li>
+    <li>Cross-cut the next 35½″. Rip that piece at 40″: the 40″ part is the door panel, the narrow part becomes one end panel (6 11/16 × 24″).</li>
+    <li>Cut the door panel through the middle: two doors, 17 11/16 × 40″ each. The ⅛″ saw cut becomes the gap between them, which doors need anyway to swing.</li>
+    <li>From the bottom strip: the second end panel (6 11/16 × 24″) and the divider (22 7/8 × 6″).</li>
+  </ol>
+  <h2 style="margin-top:18px">Gun box on the wall, sheet 2</h2>
+  <dl class="kv">
+    <dt>Length</dt><dd>47″ outside, 45 9/16″ inside. Your 43″ gun fits with about 1¼″ spare each end.</dd>
+    <dt>Depth</dt><dd>6″ from the wall is fine for a gun lying flat on its side. Check the thickest point (bolt handle, scope, grip) is under 4½″.</dd>
+    <dt>Height</dt><dd>not decided yet: measure the gun's tallest point, stock or magazine, and add 2″.</dd>
+    <dt>Front</dt><dd>clear acrylic in a groove or on hinges keeps dust out. Add a small lock.</dd>
+    <dt>Back</dt><dd>needed for wall fixing; screw through it into wall plugs.</dd>
+  </dl>
+  <div class="cap" style="margin-top:auto;padding-top:10px"><b>7</b><span>What fits where</span><em>sheet 2 drawn once the gun height is known</em></div>
+</section>
+
+<section class="v cut">
+  <h2>Cut list, sheet 1, 18 mm MDF</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Part</th><th>Qty</th><th>Size (in)</th><th>Size (mm)</th></tr></thead>
+    <tbody>
+      <tr><td>Top</td><td class="n">1</td><td class="n">47 × 24 (3′-11″ × 2′)</td><td class="n">1194 × 610</td></tr>
+      <tr><td>Bottom, fits between ends</td><td class="n">1</td><td class="n">45 9/16 × 24</td><td class="n">1158 × 610</td></tr>
+      <tr><td>End panels</td><td class="n">2</td><td class="n">6 11/16 × 24</td><td class="n">170 × 610</td></tr>
+      <tr><td>Centre divider, set back 1 1/8″</td><td class="n">1</td><td class="n">6 × 22 7/8</td><td class="n">152 × 581</td></tr>
+      <tr><td>Doors</td><td class="n">2</td><td class="n">17 11/16 × 40 (3′-4″)</td><td class="n">449 × 1016</td></tr>
+      <tr><td>Black tapered legs, angled plates</td><td class="n">4</td><td class="n">≈ 9 1/16 long</td><td class="n">≈ 231</td></tr>
+      <tr><td>Edge tape, table + doors</td><td class="n">1 roll</td><td class="n" colspan="2">≈ 14 m used, buy 16 m</td></tr>
+    </tbody>
+  </table></div>
+  <p style="font-size:13px;color:var(--soft);margin:8px 0 0">The top runs the full 47″ and sits on the end panels; the bottom fits between them, which leaves some margin in case the trim is a little more than 1″. Each opening is 22 7/16″ (570 mm) wide × 6″ tall.</p>
+</section>
+
+<section class="v notes">
+  <h2>Notes</h2>
+  <ol>
+    <li><strong>Overall height 16½″ is assumed.</strong> Measure your sofa's cushion height, subtract 1–2″, then subtract the 7 7/16″ box. That is your leg length.</li>
+    <li>Tape every visible edge. Tape adds under 1 mm, so it doesn't change any size on this sheet.</li>
+    <li><strong>Table is now 47″ long</strong> so the top and bottom stack across the upright sheet. If the cutter trims a hair more than 1″, the top just comes out a hair shorter.</li>
+    <li>Top onto ends and divider: 8 mm dowels and glue, so the top stays clean. Bottom into ends: confirmat screws through the end panels, with cover caps, plus glue. Pre-drill everything.</li>
+    <li>The divider is 1⅛″ shorter than the table depth so it fits the sheet; set it back from the front, like in the photo.</li>
+    <li>Mount legs on angled plates, set 3″ in from the ends and 2½″ in from the long edges, for the splay shown.</li>
+    <li>Ironing only on a heat-resistant pad, never direct on the laminate.</li>
+    <li class="flag">Placement clash: with the 6′-wide bed the sofa-to-bed aisle is 2′-6″. The 24″-deep table leaves only 6″ to walk past (view 2).</li>
+  </ol>
+</section>
+
+<section class="v title">
+  <div>
+    <p class="big">Sofa table, doors &amp; bedroom layout</p>
+    <p style="margin:4px 0 0;color:var(--soft);font-size:14px">One sheet combining the table, the doors, the cutting plan and the master bedroom plan.</p>
+  </div>
+  <dl class="kv">
+    <dt>Table</dt><dd>47 × 24 × 16½″ (assumed)</dd>
+    <dt>Clear openings</dt><dd>6″ high, 2 equal</dd>
+    <dt>Material</dt><dd>18 mm MDF, taped edges, black legs</dd>
+    <dt>Room</dt><dd>14′-0″ × 11′-6″, 161 sq ft</dd>
+    <dt>Bed</dt><dd>6′-0″ wide × 6′-6″ long</dd>
+    <dt>Sheet</dt><dd>one 8′ × 4′ upright, trimmed to 47 × 95″; gun box on a second sheet</dd>
+    <dt>Units</dt><dd>inches unless noted</dd>
+    <dt>Date</dt><dd>Sheet 1 of 1, 23 Sep 2026</dd>
+  </dl>
+  <div class="legend">
+    <span><i style="background:var(--board)"></i>board</span>
+    <span><i style="background:var(--gun)"></i>doors</span><span><i style="background:var(--leg)"></i>legs</span>
+    <span><i style="background:var(--pencil);border-color:var(--pencil)"></i>dimensions</span>
+    <span><i style="background:transparent;border:1.5px dashed var(--clash)"></i>clash</span>
+  </div>
+</section>
+
+</main>
+</body>
+</html>

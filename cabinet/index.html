@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PC side cabinet: design and build sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#E4E6E3; --paper:#F2F3F1; --ink:#1E2225; --muted:#586065; --line:#C3C8C5;
+  --wood:#8B5A3C; --wood2:#D2A77F; --door:#4D5A51; --steel:#2B2F33; --dim:#1B6A86;
+  --scene:#D9DCD9; --warn:#8A4B12;
+  --font:"Archivo", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15181A; --paper:#1D2124; --ink:#E5E8E6; --muted:#9AA3A7; --line:#33393D;
+    --wood2:#9C7250; --door:#6E7D72; --steel:#A9B1B6; --dim:#6FB8D2; --scene:#1B1F22; --warn:#E0A060;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15181A; --paper:#1D2124; --ink:#E5E8E6; --muted:#9AA3A7; --line:#33393D;
+  --wood2:#9C7250; --door:#6E7D72; --steel:#A9B1B6; --dim:#6FB8D2; --scene:#1B1F22; --warn:#E0A060;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{padding:40px 0 18px}
+h1{font-stretch:75%;font-weight:800;font-size:clamp(34px,6vw,62px);line-height:1;letter-spacing:-.01em;margin:0 0 14px}
+.lede{max-width:66ch;color:var(--muted);margin:0}
+.lede b{color:var(--ink);font-weight:650}
+.viewer{position:relative;background:var(--scene);border:1px solid var(--line);border-radius:14px;overflow:hidden;height:min(72vh,680px);min-height:420px;touch-action:none}
+.viewer canvas{display:block;width:100%;height:100%;cursor:grab}
+.viewer canvas:active{cursor:grabbing}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.controls button{font:inherit;font-size:15px;font-weight:600;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.controls button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.controls button:focus-visible{outline:3px solid var(--dim);outline-offset:2px}
+.hint{position:absolute;left:14px;bottom:12px;font-size:13px;color:var(--muted);background:color-mix(in srgb,var(--paper) 80%,transparent);padding:4px 10px;border-radius:8px;pointer-events:none}
+.legend{position:absolute;right:12px;top:12px;font-size:13px;background:color-mix(in srgb,var(--paper) 88%,transparent);padding:8px 12px;border-radius:10px;line-height:1.7}
+.sw{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:7px;vertical-align:-1px}
+section{padding:46px 0 6px;border-top:1px solid var(--line);margin-top:40px}
+h2{font-stretch:85%;font-weight:750;font-size:30px;line-height:1.1;margin:0 0 12px}
+h3{font-size:18px;font-weight:700;margin:22px 0 6px}
+p{max-width:70ch;margin:0 0 12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+.drawing{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;overflow-x:auto}
+.drawing svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.cap{font-size:14px;color:var(--muted);margin:8px 4px 0}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:700;font-stretch:90%}
+tr:last-child td{border-bottom:none}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+.key{display:inline-grid;place-items:center;min-width:26px;height:26px;border-radius:7px;background:var(--wood2);color:#1E2225;font-weight:750;font-size:14px}
+.note{border-left:4px solid var(--warn);padding:10px 16px;background:var(--paper);border-radius:0 10px 10px 0;max-width:72ch;margin:14px 0}
+.note b{color:var(--warn)}
+.steps{max-width:72ch;padding-left:22px}
+.steps li{margin:0 0 10px}
+footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>PC side cabinet with open rack</h1>
+  <p class="lede">A closed MDF cabinet whose top sits exactly at your desk height (<b>30″</b>), carrying your PC, with a black steel rack above it for drives, chargers and display pieces. Overall <b>32″ wide × 24″ deep × 72″ tall</b> (813 × 603 × 1829 mm), on six adjustable feet, anchored to the wall for earthquakes.</p>
+</header>
+
+<div class="viewer" id="viewer">
+  <div class="legend">
+    <div><span class="sw" style="background:#8B5A3C"></span>18 mm MDF, laminated</div>
+    <div><span class="sw" style="background:#4D5A51"></span>Doors</div>
+    <div><span class="sw" style="background:#26292c"></span>1″ square steel tube</div>
+  </div>
+  <div class="hint" id="hint">Drag to rotate · scroll or pinch to zoom</div>
+</div>
+<div class="controls" role="group" aria-label="Model controls">
+  <button id="bDoors" aria-pressed="false">Open doors</button>
+  <button id="bProps" aria-pressed="true">Show PC and stuff</button>
+  <button id="bTable" aria-pressed="true">Show my desk</button>
+  <button id="vFront">Front view</button>
+  <button id="vAngle">Angled view</button>
+  <button id="vSide">Side view</button>
+</div>
+
+<section>
+  <h2>What you asked for</h2>
+  <p>Your current side table is a metal frame with an MDF top, and the space around the PC is overrun with a spare keyboard, several hard drives, chargers, a spare server laptop, power cords and extension boards. Nothing in the market fit: the best cabinet you found was only 13″ deep, and your PC is 14″, with no shelves inside.</p>
+  <p>So the brief is a custom piece your father can hand to a carpenter: a cabinet up to desk height (your desk top measures about 30″, desk depth 24″), the PC standing on top of it with some margin so it can't walk off in a tremor, somewhere to rest the devices plugged into the back of the PC instead of letting them dangle, shelves on the left for small stuff, a shelf above, everything visible and reachable standing up, around 6 ft tall, with adjustable steel feet for levelling.</p>
+</section>
+
+<section>
+  <h2>Why this layout</h2>
+  <p><b>Closed below, open above.</b> Junk you rarely touch (the spare laptop, cords, the extension boards, a small UPS) goes behind doors where dust can't reach it. Everything you touch often, and the PC itself, stays in the open rack where you can see it and grab it standing up.</p>
+  <p><b>Steel for the upper half, not MDF.</b> I recommend a welded 1″ square tube frame on top of the MDF cabinet, a hybrid of your metal-frame idea and a cabinet. Tall MDF side panels would hide the PC, trap heat around it and need a second full sheet on their own. The thin steel posts leave the PC in view, let air move freely, and the steel rails run under every shelf edge, so the 32″ MDF shelves can't sag over the years (unsupported MDF is the weakest sheet material for long spans). Welders who make iron racks and gates can build this frame cheaply in any market.</p>
+  <p><b>24″ deep, matched to your desk.</b> This clears your PC with room to spare in either direction. With a 14″ deep PC you get 1¾″ of margin at the front, a 3″ cable gap behind the PC, and a 5″ deep ledge at the back for whatever is plugged into the rear ports.</p>
+  <div class="note"><b>Check one number before cutting.</b> You wrote the PC as 14″ long, 18″ wide, 18″ high. Most tower cases are deeper front-to-back than they are wide. Put a tape on the PC side panel, front to back. If that reads 14″, this design fits as drawn. If it reads 18″, everything still fits, but cut the rear ledge (part K) to 3″ deep instead of 5″.</div>
+</section>
+
+<section>
+  <h2>Drawings for the carpenter and welder</h2>
+  <div class="grid2">
+    <div>
+      <div class="drawing" id="dFront"></div>
+      <p class="cap">Front elevation. All dimensions in inches. Dashed box is the PC.</p>
+    </div>
+    <div>
+      <div class="drawing" id="dSide"></div>
+      <p class="cap">Right side elevation, front of the cabinet on the left.</p>
+    </div>
+  </div>
+  <h3>Heights, from the floor</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Level</th><th>Height</th><th>What's there</th></tr></thead>
+    <tbody>
+      <tr><td>Feet</td><td class="n">0 – 1½″</td><td>6 levelling feet, about ±½″ of adjustment, so you can match the desk exactly.</td></tr>
+      <tr><td>Cabinet top</td><td class="n">30″</td><td>Same height as your desk top. PC stands here.</td></tr>
+      <tr><td>Left cubbies</td><td class="n">30″, 38″, 46″</td><td>Three open cubbies, 9″ wide and 6–7″ tall, for drives, chargers, hubs.</td></tr>
+      <tr><td>Rear ledge</td><td class="n">38″</td><td>5″ deep, behind the PC, for devices plugged into the back ports.</td></tr>
+      <tr><td>PC bay clearance</td><td class="n">23″</td><td>18″ PC plus 5″ breathing room for top exhaust fans.</td></tr>
+      <tr><td>Middle shelf</td><td class="n">54¾″</td><td>Full width, spare keyboard, router, speakers.</td></tr>
+      <tr><td>Top</td><td class="n">72″</td><td>Light display pieces only (plant, small decor).</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>MDF cut list</h2>
+  <p>All parts from 18 mm (¾″) MDF, ideally pre-laminated on both faces, with PVC edge tape on every visible edge. Sizes are width × depth (or width × height for panels that stand up).</p>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th>Part</th><th>Qty</th><th>Inches</th><th>mm</th></tr></thead>
+    <tbody id="cutBody"></tbody>
+  </table></div>
+  <p class="cap">Plus one back panel from 5 mm hardboard or thin MDF: 32 × 27¾″ (813 × 705 mm), with vent holes and cable holes.</p>
+
+  <h3>How it comes out of the sheets</h3>
+  <p>One 8 × 4 ft sheet is not enough. The cabinet alone needs a little more than one full sheet, so buy <b>two sheets</b>. The second sheet leaves a 24 × 40″ offcut for a keyboard tray or spare shelf later. Rip each sheet into two 23¾″ strips first, then cross-cut, and use the factory edges for the long 32″ parts.</p>
+  <div class="drawing" id="dSheets"></div>
+</section>
+
+<section>
+  <h2>Steel frame</h2>
+  <p>1″ × 1″ square tube (18 gauge), welded, powder-coated or painted matt black. About 15 m of tube, 2.5 m of 1″ angle for the small shelf ledges, and 3 m of 1″ × 3 mm flat bar for the cross braces.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Piece</th><th>Qty</th><th>Length</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Corner posts</td><td class="n">4</td><td class="n">41¼″</td><td>From the cabinet top to under the top board.</td></tr>
+      <tr><td>Middle posts</td><td class="n">2</td><td class="n">23″</td><td>Front and back, 10″ from the left edge. They divide the cubbies from the PC bay.</td></tr>
+      <tr><td>Rail rings</td><td class="n">3 rings</td><td class="n">32″ + 32″ + 21¾″ + 21¾″</td><td>At 30″ (base ring, bolted to the cabinet top), 53″ (under the middle shelf) and 70¼″ (under the top). The front bar of the base ring doubles as a 1″ lip that stops the PC sliding forward.</td></tr>
+      <tr><td>Cubby ledges</td><td class="n">4</td><td class="n">21¾″</td><td>1″ angle, at 37″ and 45″, on both sides of the left column.</td></tr>
+      <tr><td>Rear ledge rail</td><td class="n">1</td><td class="n">20″</td><td>At 37″ across the back of the PC bay, with 2 small gussets. Drill 3 bolt positions so the ledge height can move.</td></tr>
+      <tr><td>Cross braces</td><td class="n">4</td><td class="n">about 25″ and 35″</td><td>Flat bar X on the back of the left column and the back of the top section. Add triangle gussets in the PC bay corners.</td></tr>
+    </tbody>
+  </table></div>
+  <p>Weld a small plate under each post and screw the whole frame down into the cabinet sides and divider with 8 screws. Drill 4 holes through each rail ring so the MDF shelves can be screwed up from below.</p>
+</section>
+
+<section>
+  <h2>Hardware to buy</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Item</th><th>Qty</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td>Adjustable levelling feet, M10 thread, 50 mm pad</td><td class="n">6</td><td>Level the cabinet on an uneven floor and match the desk height. Mount into 2 × 2″ hardwood blocks glued under the bottom with T-nuts, because screw threads in MDF alone strip out. The sixth pair goes under the divider, where the PC load comes down.</td></tr>
+      <tr><td>Soft-close concealed hinges, 35 mm, full overlay</td><td class="n">4</td><td>Two per door.</td></tr>
+      <tr><td>Slim bar handles or push-to-open latches</td><td class="n">2</td><td>Your choice of look.</td></tr>
+      <tr><td>5 mm shelf pins</td><td class="n">12</td><td>Adjustable shelves inside the cabinet.</td></tr>
+      <tr><td>60 mm cable grommets</td><td class="n">2</td><td>In the cabinet top behind the PC, so power leads drop into the cabinet to the extension boards.</td></tr>
+      <tr><td>Anti-tip wall brackets or straps with wall plugs</td><td class="n">2</td><td>Top rail to wall. Not optional for a 6 ft unit in Rawalpindi/Islamabad.</td></tr>
+      <tr><td>Rubber anti-slip mat, about 16 × 16″</td><td class="n">1</td><td>Under the PC.</td></tr>
+      <tr><td>PVC edge tape matching the laminate</td><td class="n">about 30 m</td><td>All visible MDF edges; also keeps moisture out.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Earthquake and safety details</h2>
+  <p>The Islamabad–Rawalpindi area sits in a high seismic zone, so the design leans on four habits. The heavy things live low: the cabinet full of cords, drives and the spare laptop is the ballast that keeps the whole unit bottom-heavy. The PC sits behind a 1″ steel lip on an anti-slip mat, with 1¾″ of margin to the front edge. The top rail is fixed to the wall with two anti-tip brackets, which is the single most effective thing you can do for tall furniture. And the top shelf at 72″ holds only light things, never anything glass or heavy.</p>
+  <div class="note"><b>About a UPS in the cabinet.</b> A small desktop PC UPS on the bottom right is fine, as long as the back panel has vent holes behind it. Large inverter batteries (tubular types) must not go in a closed cabinet: they need open air for heat and gas.</div>
+  <h3>Power and cables</h3>
+  <p>Screw the extension boards to the inside of the cabinet's right section, run their cables out through a hole in the back panel to the wall socket, and bring the PC and monitor power leads down through the grommets in the cabinet top. The rear ledge takes the USB hub, external SSD or any dongle plugged into the back of the PC. Leave the 3″ gap between the ledge and the PC for cable bends.</p>
+</section>
+
+<section>
+  <h2>Build order</h2>
+  <ol class="steps">
+    <li>Measure the desk top height once more, and the PC's true front-to-back depth.</li>
+    <li>Carpenter builds the cabinet box: sides, bottom, divider, top, back panel, glued and screwed, with the foot blocks and T-nuts underneath.</li>
+    <li>Drill shelf pin holes, cut the two grommet holes and the back vents, fit the doors.</li>
+    <li>Welder builds the frame to the drawing, using the finished cabinet top as the reference so the posts land on the sides and divider.</li>
+    <li>Paint the frame, screw it down to the cabinet, fit the MDF shelves on the rails.</li>
+    <li>Set the feet so the cabinet top is flush with the desk, fix the top rail to the wall, then load it heaviest-first from the bottom.</li>
+  </ol>
+</section>
+
+<footer>Model is to scale. Props (PC, drives, laptop, desk) are for size reference only.</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+const W=32, D=23.75, H=72;
+
+/* ---------- part data (inches): x=[left,right], y=[bottom,top], z=[back,front] ---------- */
+const parts=[];
+function P(k,x0,x1,y0,y1,z0,z1,name){parts.push({k,x:[x0,x1],y:[y0,y1],z:[z0,z1],name});}
+// cabinet
+P('back',0,W,1.5,29.25,-0.2,0,'back');
+P('wood',0,0.75,1.5,29.25,0,D,'side');
+P('wood',W-0.75,W,1.5,29.25,0,D,'side');
+P('wood',0.75,W-0.75,1.5,2.25,0,D,'bottom');
+P('wood',0,W,29.25,30,0,D,'top');
+P('wood',15.625,16.375,2.25,29.25,0.25,D,'divider');
+P('wood',0.75,15.5,11,11.75,1,23,'shelf');
+P('wood',0.75,15.5,20,20.75,1,23,'shelf');
+P('wood',16.5,W-0.75,15,15.75,1,23,'shelf');
+// upper shelves
+P('wood',0,W,54,54.75,0,D,'main');
+P('wood',0,W,71.25,72,0,D,'topboard');
+P('wood',1,10,38,38.75,0,D,'cubby');
+P('wood',1,10,46,46.75,0,D,'cubby');
+P('wood',11,31,38,38.75,0,5,'ledge');
+// steel posts
+[[0,1],[31,32]].forEach(xx=>[[0,1],[D-1,D]].forEach(zz=>P('metal',xx[0],xx[1],30,71.25,zz[0],zz[1],'post')));
+[[0,1],[D-1,D]].forEach(zz=>P('metal',10,11,30,53,zz[0],zz[1],'mpost'));
+// rail rings
+[[30,31],[53,54],[70.25,71.25]].forEach(yy=>{
+  P('metal',0,W,yy[0],yy[1],0,1,'rail'); P('metal',0,W,yy[0],yy[1],D-1,D,'rail');
+  P('metal',0,1,yy[0],yy[1],1,D-1,'rail'); P('metal',W-1,W,yy[0],yy[1],1,D-1,'rail');
+});
+// cubby ledges (angle)
+[[37,38],[45,46]].forEach(yy=>{P('metal',1,1.8,yy[0],yy[1],1,D-1,'ledge');P('metal',9.2,10,yy[0],yy[1],1,D-1,'ledge');});
+P('metal',11,31,37,38,0,1,'rrail');
+// doors (front view only; 3D handled separately)
+const doorL={x:[0.06,15.94],y:[1.62,29.12],z:[D,D+0.75]}, doorR={x:[16.06,31.94],y:[1.62,29.12],z:[D,D+0.75]};
+const feet=[];[2,16,30].forEach(x=>[2,D-2].forEach(z=>feet.push({x,z})));
+const braces=[[[0.5,31],[10.5,53]],[[10.5,31],[0.5,53]],[[0.5,54.9],[31.5,70.1]],[[31.5,54.9],[0.5,70.1]]];
+const PC={x:[12,30],y:[30,48],z:[8,22]};
+
+/* ---------- 2D drawings ---------- */
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function frac(v){const w=Math.floor(v+1e-6),f=v-w;const m={0:'',0.25:'¼',0.5:'½',0.75:'¾',0.125:'⅛',0.875:'⅞'};const k=Object.keys(m).find(q=>Math.abs(q-f)<0.01);return (w?w:'')+(k!==undefined?m[k]:f.toFixed(2).slice(1))+'″';}
+function drawing(view){
+  const s=5, pl=58, pt=26, span=view==='front'?W:D, pr=view==='front'?118:88, pb=58;
+  const w=pl+span*s+pr, h=pt+H*s+pb;
+  const X=v=>view==='front'?pl+v*s:pl+(D+0.75-v)*s;
+  const Y=v=>pt+(H-v)*s;
+  let o=`<svg viewBox="0 0 ${w} ${h}" width="${w}" xmlns="http://www.w3.org/2000/svg" font-family="Archivo, Arial, sans-serif" font-size="11" role="img" aria-label="${view} elevation">`;
+  o+=`<line x1="${pl-20}" x2="${pl+span*s+20}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--muted)" stroke-width="1"/>`;
+  const fill={wood:'var(--wood2)',metal:'var(--steel)',back:'var(--line)',door:'var(--door)'};
+  const rect=(p,k,dash)=>{const a=view==='front'?p.x:p.z;let x0=X(a[0]),x1=X(a[1]);if(x0>x1)[x0,x1]=[x1,x0];
+    return `<rect x="${x0}" y="${Y(p.y[1])}" width="${Math.max(x1-x0,0.6)}" height="${(p.y[1]-p.y[0])*s}" fill="${dash?'none':fill[k]}" stroke="var(--ink)" stroke-width="${dash?1.2:0.6}" ${dash?'stroke-dasharray="4 3"':''}/>`;};
+  let list=parts.filter(p=>!(view==='front'&&p.k==='back')).slice();
+  const depthKey=p=>view==='front'?p.z[1]:p.x[1];
+  list.sort((a,b)=>depthKey(a)-depthKey(b));
+  if(view==='side'){const rightMost=list.filter(p=>p.x[1]>=W-1||p.k!=='metal'||true);list=rightMost;}
+  list.forEach(p=>o+=rect(p,p.k));
+  if(view==='front'){o+=rect(doorL,'door')+rect(doorR,'door');
+    o+=`<rect x="${X(14.6)}" y="${Y(20)}" width="${0.6*s}" height="${5*s}" fill="var(--steel)"/><rect x="${X(16.8)}" y="${Y(20)}" width="${0.6*s}" height="${5*s}" fill="var(--steel)"/>`;}
+  else o+=rect({x:doorR.x,y:doorR.y,z:doorR.z},'door');
+  // braces (front view shows back braces faintly)
+  if(view==='front') braces.forEach(b=>o+=`<line x1="${X(b[0][0])}" y1="${Y(b[0][1])}" x2="${X(b[1][0])}" y2="${Y(b[1][1])}" stroke="var(--steel)" stroke-width="1" opacity=".45"/>`);
+  feet.forEach(f=>{const c=view==='front'?f.x:f.z;o+=`<rect x="${X(c)-4}" y="${Y(1.5)}" width="8" height="${1.5*s}" fill="var(--steel)"/>`;});
+  o+=rect(PC,'none',true);
+  const pcx=view==='front'?(X(PC.x[0])+X(PC.x[1]))/2:(X(PC.z[0])+X(PC.z[1]))/2;
+  o+=`<text x="${pcx}" y="${Y(39.5)}" text-anchor="middle" fill="var(--ink)" font-weight="600">PC</text>`;
+  // dims
+  const dc='var(--dim)';
+  const arrowH=(x1,x2,y,t,up)=>`<g stroke="${dc}" fill="${dc}"><line x1="${x1}" x2="${x2}" y1="${y}" y2="${y}"/><line x1="${x1}" x2="${x1}" y1="${y-4}" y2="${y+4}"/><line x1="${x2}" x2="${x2}" y1="${y-4}" y2="${y+4}"/><text x="${(x1+x2)/2}" y="${up?y-4:y+13}" text-anchor="middle" stroke="none" font-weight="600">${t}</text></g>`;
+  const arrowV=(x,y1,y2,t,side)=>`<g stroke="${dc}" fill="${dc}"><line x1="${x}" x2="${x}" y1="${y1}" y2="${y2}"/><line x1="${x-4}" x2="${x+4}" y1="${y1}" y2="${y1}"/><line x1="${x-4}" x2="${x+4}" y1="${y2}" y2="${y2}"/><text x="${side<0?x-6:x+6}" y="${(y1+y2)/2+4}" text-anchor="${side<0?'end':'start'}" stroke="none" font-weight="600">${t}</text></g>`;
+  if(view==='front'){
+    o+=arrowH(X(0),X(W),Y(0)+22,frac(W)+' overall');
+    o+=arrowH(X(1),X(10),Y(H)-8,'9″',true);
+    o+=arrowH(X(11),X(31),Y(H)-8,'20″ PC bay',true);
+    o+=arrowV(pl-26,Y(0),Y(H),'72″',-1);
+    const rx=pl+W*s+14;
+    o+=arrowV(rx,Y(0),Y(30),'30″ desk height',1);
+    o+=arrowV(rx,Y(30),Y(53),'23″ clear',1);
+    o+=arrowV(rx,Y(54.75),Y(70.25),'15½″ clear',1);
+  }else{
+    o+=arrowH(X(D+0.75),X(0),Y(0)+22,'24″ incl. doors');
+    o+=arrowH(X(D),X(PC.z[1]),Y(H)-8,'1¾″',true);
+    o+=arrowH(X(PC.z[1]),X(PC.z[0]),Y(52)+0,'PC 14″',true);
+    o+=arrowH(X(PC.z[0]),X(5),Y(35),'3″',false);
+    o+=arrowH(X(5),X(0),Y(41),'5″',true);
+    o+=arrowV(pl+ (D+0.75)*s+14,Y(30),Y(38.75),'ledge 38¾″',1);
+    o+=`<text x="${X(D+0.75)}" y="${Y(H)-14}" fill="var(--muted)">front</text><text x="${X(0)}" y="${Y(H)-14}" text-anchor="end" fill="var(--muted)">back</text>`;
+  }
+  return o+'</svg>';
+}
+document.getElementById('dFront').innerHTML=drawing('front');
+document.getElementById('dSide').innerHTML=drawing('side');
+
+/* ---------- cut list ---------- */
+const cuts=[
+ ['A','Cabinet top',1,'32 × 23¾','813 × 603'],
+ ['B','Cabinet sides',2,'27¾ × 23¾','705 × 603'],
+ ['C','Cabinet bottom',1,'30½ × 23¾','775 × 603'],
+ ['D','Centre divider',1,'27 × 23½','686 × 597'],
+ ['E','Cabinet shelves (adjustable)',3,'14¾ × 22','375 × 559'],
+ ['F','Doors',2,'15⅞ × 27½','403 × 699'],
+ ['G','Middle shelf',1,'32 × 23¾','813 × 603'],
+ ['H','Top',1,'32 × 23¾','813 × 603'],
+ ['J','Cubby shelves',2,'9 × 23¾','229 × 603'],
+ ['K','Rear ledge',1,'20 × 5 (3 if PC is 18″ deep)','508 × 127'],
+];
+document.getElementById('cutBody').innerHTML=cuts.map(c=>`<tr><td><span class="key">${c[0]}</span></td><td>${c[1]}</td><td class="n">${c[2]}</td><td class="n">${c[3]}</td><td class="n">${c[4]}</td></tr>`).join('');
+
+/* ---------- sheet layout ---------- */
+(function(){
+  const s=3.4, g=36, sw=96*s, sh=48*s;
+  const sheets=[
+    [['B',0,27.75,0,23.75],['B',27.875,55.625,0,23.75],['D',55.75,82.75,0,23.5],['J',82.875,91.875,0,23.75],
+     ['A',0,32,23.875,47.625],['C',32.125,62.625,23.875,47.625],['G',62.75,94.75,23.875,47.625]],
+    [['H',0,32,0,23.75],['E',32.125,46.875,0,22],['E',47,61.75,0,22],['E',61.875,76.625,0,22],['J',76.75,85.75,0,23.75],
+     ['F',0,27.5,23.875,39.75],['F',27.625,55.125,23.875,39.75],['K',0,20,39.875,44.875],['spare',56,96,23.875,48]]
+  ];
+  const tw=Math.max(sw+40,sw*2+g+40);
+  let o=`<svg viewBox="0 0 ${sw*2+g+20} ${sh+40}" xmlns="http://www.w3.org/2000/svg" font-family="Archivo, Arial, sans-serif" role="img" aria-label="Cutting layout on two 8 by 4 ft sheets">`;
+  sheets.forEach((sh_,i)=>{
+    const ox=10+i*(sw+g), oy=22;
+    o+=`<text x="${ox}" y="14" font-size="12" font-weight="700" fill="var(--ink)">Sheet ${i+1}: 96 × 48″</text>`;
+    o+=`<rect x="${ox}" y="${oy}" width="${sw}" height="${sh}" fill="none" stroke="var(--muted)" stroke-dasharray="3 3"/>`;
+    sh_.forEach(p=>{const spare=p[0]==='spare';
+      o+=`<rect x="${ox+p[1]*s}" y="${oy+p[3]*s}" width="${(p[2]-p[1])*s}" height="${(p[4]-p[3])*s}" fill="${spare?'none':'var(--wood2)'}" stroke="var(--ink)" stroke-width=".7" ${spare?'stroke-dasharray="2 3"':''}/>`;
+      o+=`<text x="${ox+(p[1]+p[2])/2*s}" y="${oy+(p[3]+p[4])/2*s+5}" text-anchor="middle" font-size="${spare?11:15}" font-weight="700" fill="${spare?'var(--muted)':'#1E2225'}">${spare?'offcut 24 × 40':p[0]}</text>`;});
+  });
+  document.getElementById('dSheets').innerHTML=o+'</svg>';
+})();
+
+/* ---------- 3D ---------- */
+const host=document.getElementById('viewer');
+if(!window.THREE){document.getElementById('hint').textContent='3D view could not load. The drawings below are complete.';return;}
+const renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.outputEncoding=THREE.sRGBEncoding;
+host.prepend(renderer.domElement);
+const scene=new THREE.Scene();
+const cam=new THREE.PerspectiveCamera(35,1,1,1000);
+scene.add(new THREE.HemisphereLight(0xffffff,0x8a8a80,0.75));
+const sun=new THREE.DirectionalLight(0xffffff,0.8);
+sun.position.set(-50,110,90); sun.castShadow=true; sun.shadow.mapSize.set(2048,2048);
+Object.assign(sun.shadow.camera,{left:-80,right:110,top:110,bottom:-20,near:10,far:300});
+scene.add(sun);
+const fill2=new THREE.DirectionalLight(0xffffff,0.25); fill2.position.set(80,40,-40); scene.add(fill2);
+
+const M={
+ wood:new THREE.MeshStandardMaterial({color:0x8B5A3C,roughness:.7}),
+ door:new THREE.MeshStandardMaterial({color:0x4D5A51,roughness:.6}),
+ metal:new THREE.MeshStandardMaterial({color:0x26292c,roughness:.45,metalness:.5}),
+ back:new THREE.MeshStandardMaterial({color:0x6d5140,roughness:.9}),
+ floor:new THREE.MeshStandardMaterial({color:0xbdbdb5,roughness:1}),
+};
+const mat=c=>new THREE.MeshStandardMaterial({color:c,roughness:.6});
+function box(x0,x1,y0,y1,z0,z1,m,parent){
+  const g=new THREE.BoxGeometry(x1-x0,y1-y0,z1-z0);const me=new THREE.Mesh(g,m);
+  me.position.set((x0+x1)/2,(y0+y1)/2,(z0+z1)/2);me.castShadow=true;me.receiveShadow=true;(parent||scene).add(me);return me;}
+function bar(a,b,z,t,m){const va=new THREE.Vector3(a[0],a[1],z),vb=new THREE.Vector3(b[0],b[1],z);const len=va.distanceTo(vb);
+  const me=new THREE.Mesh(new THREE.BoxGeometry(len,t,0.15),m);me.position.copy(va.clone().add(vb).multiplyScalar(.5));
+  me.quaternion.setFromUnitVectors(new THREE.Vector3(1,0,0),vb.clone().sub(va).normalize());me.castShadow=true;scene.add(me);}
+
+parts.forEach(p=>box(p.x[0],p.x[1],p.y[0],p.y[1],p.z[0],p.z[1],M[p.k]));
+braces.forEach(b=>bar(b[0],b[1],-0.12,1,M.metal));
+feet.forEach(f=>{const c=new THREE.Mesh(new THREE.CylinderGeometry(.5,.5,1.1,16),M.metal);c.position.set(f.x,.95,f.z);scene.add(c);
+  const pad=new THREE.Mesh(new THREE.CylinderGeometry(1,1,.4,20),mat(0x111111));pad.position.set(f.x,.2,f.z);pad.castShadow=true;scene.add(pad);});
+// grommets
+[[25,3],[20,3]].forEach(g=>{const r=new THREE.Mesh(new THREE.CylinderGeometry(1.2,1.2,.05,24),mat(0x111111));r.position.set(g[0],30.03,g[1]+3);scene.add(r);});
+
+// doors
+function mkDoor(d,hingeX,sign){const piv=new THREE.Group();piv.position.set(hingeX,0,D);scene.add(piv);
+  box(d.x[0]-hingeX,d.x[1]-hingeX,d.y[0],d.y[1],0,0.75,M.door,piv);
+  const hx=sign>0?d.x[1]-hingeX-1.4:d.x[0]-hingeX+1.4;box(hx-.3,hx+.3,12,21,0.75,1.4,M.metal,piv);return piv;}
+const dL=mkDoor(doorL,0,1), dR=mkDoor(doorR,W,-1);
+
+// floor
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(600,600),M.floor);floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
+
+// props
+const props=new THREE.Group();scene.add(props);
+const pb=(x0,x1,y0,y1,z0,z1,c,em)=>{const m=mat(c);if(em){m.emissive=new THREE.Color(em);m.emissiveIntensity=.9;}return box(x0,x1,y0,y1,z0,z1,m,props);};
+// PC case
+pb(12,30,30.3,30.9,8,22,0x1a1c1f); pb(12,30,47.4,48,8,22,0x1a1c1f); pb(29.4,30,30.3,48,8,22,0x1a1c1f);
+pb(12,30,30.3,48,8,8.6,0x1a1c1f); pb(12,30,30.3,48,21.4,22,0x202326);
+pb(12.6,13.1,31.5,46.8,21.9,22.08,0x0,0x57c7e3);
+const glass=new THREE.Mesh(new THREE.BoxGeometry(.15,16.5,13.2),new THREE.MeshStandardMaterial({color:0x6a8090,transparent:true,opacity:.28,roughness:.1}));glass.position.set(12.1,39.15,15);props.add(glass);
+pb(27.8,29.3,32,46.5,9.5,20.5,0x27323d); pb(18,27.8,38,40.4,10.5,20,0x2e3136); pb(18,18.3,38.2,40.2,10.6,19.8,0x0,0xa06cf0);
+pb(22,27.8,42,45.5,13,17,0x3a3d42);
+// cubbies: drives, chargers, hub
+[[1.8,5.4],[5.8,9.2]].forEach((xx,i)=>{pb(xx[0],xx[1],30,31.1,9,14,0x2c2f33);pb(xx[0],xx[1],31.1,32.2,9,14,i?0x7a2a2a:0x2c2f33);});
+pb(2,9,30,31,16,21,0x3b4a5a);
+pb(2,4.5,38.75,40.5,14,17,0xeeeeee); pb(5,7.5,38.75,40.3,14,17,0x222222);
+const coil=new THREE.Mesh(new THREE.TorusGeometry(1.8,.35,8,24),mat(0x111111));coil.rotation.x=Math.PI/2;coil.position.set(5.5,39.1,7);props.add(coil);
+pb(2.5,8.5,46.75,47.6,15,19,0x303338); pb(3,8,46.75,50.5,6,8,0xdcdcdc);
+// rear ledge
+pb(13,23,38.75,40,1,3.2,0xf0f0f0); pb(25,28,38.75,39.4,1,4,0x3a3a3a);
+// middle shelf: spare keyboard, router, books
+pb(2,19.5,54.75,55.8,12,18,0x202224); pb(22,30,54.75,56.2,8,15,0x111315); 
+[0x5b6f59,0x8a3b2d,0xd8c39e,0x2e4a66].forEach((c,i)=>pb(22.5+i*1.4,23.7+i*1.4,54.75,63+((i*3)%4),16,22.5,c));
+// top: plant
+const pot=new THREE.Mesh(new THREE.CylinderGeometry(2.4,1.9,4.5,20),mat(0xd7d2c8));pot.position.set(6,74.25,12);pot.castShadow=true;props.add(pot);
+const leaf=new THREE.Mesh(new THREE.SphereGeometry(3.6,16,12),mat(0x4f7a4a));leaf.position.set(6,79.3,12);leaf.castShadow=true;props.add(leaf);
+// inside cabinet: laptop, UPS, extension boards, cables
+pb(17.5,30,2.25,9.5,6,16,0x2b2b2b); pb(20,27,6,8,15.8,16.1,0x0,0x3fbf6a);
+pb(17.5,30,15.75,16.7,4,18,0x5a5e63);
+pb(2,14,20.75,22.3,4,8,0xeeeeee); pb(2,14,20.75,22.3,10,14,0xeeeeee);
+const coil2=new THREE.Mesh(new THREE.TorusGeometry(3,.5,8,28),mat(0x111111));coil2.rotation.x=Math.PI/2;coil2.position.set(8,12.3,14);props.add(coil2);
+pb(3,13,2.25,6,5,20,0x3c4148);
+
+// desk ghost
+const desk=new THREE.Group();scene.add(desk);
+const dm=new THREE.MeshStandardMaterial({color:0xa38a73,roughness:.8});
+const dd=(x0,x1,y0,y1,z0,z1,m)=>box(x0,x1,y0,y1,z0,z1,m,desk);
+dd(34,82,28.9,30,0,24,dm);
+[[34,35.5],[80.5,82]].forEach(xx=>[[0,1.5],[22.5,24]].forEach(zz=>dd(xx[0],xx[1],0,28.9,zz[0],zz[1],M.metal)));
+dd(46,70,36,50,6,6.8,mat(0x151719)); dd(56.5,59.5,30,36,5.5,7,M.metal); dd(52,64,30,30.4,4,9,M.metal);
+dd(48,66,30,30.8,13,19,mat(0x2a2c2f));
+
+/* camera controls */
+const target=new THREE.Vector3(24,36,10);
+let th=-0.62, ph=1.3, rad=150, goal=null;
+function place(){cam.position.set(target.x+rad*Math.sin(ph)*Math.sin(th),target.y+rad*Math.cos(ph),target.z+rad*Math.sin(ph)*Math.cos(th));cam.lookAt(target);}
+const ptrs=new Map();let lastD=0;
+const cv=renderer.domElement;
+cv.addEventListener('pointerdown',e=>{cv.setPointerCapture(e.pointerId);ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});goal=null;});
+cv.addEventListener('pointermove',e=>{if(!ptrs.has(e.pointerId))return;const p=ptrs.get(e.pointerId);
+  if(ptrs.size===1){th-=(e.clientX-p.x)*0.008;ph=Math.min(1.55,Math.max(0.35,ph-(e.clientY-p.y)*0.006));}
+  p.x=e.clientX;p.y=e.clientY;
+  if(ptrs.size===2){const a=[...ptrs.values()];const d=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y);if(lastD)rad=Math.min(260,Math.max(60,rad*lastD/d));lastD=d;}});
+const up=e=>{ptrs.delete(e.pointerId);lastD=0;};
+cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
+cv.addEventListener('wheel',e=>{e.preventDefault();rad=Math.min(260,Math.max(60,rad*(1+e.deltaY*0.001)));},{passive:false});
+
+function resize(){const r=host.getBoundingClientRect();renderer.setSize(r.width,r.height,false);cam.aspect=r.width/r.height;
+  cam.fov=r.width<600?48:35;cam.updateProjectionMatrix();}
+new ResizeObserver(resize).observe(host);resize();
+
+function applyTheme(){scene.background=new THREE.Color(css('--scene')||'#D9DCD9');
+  const dark=matchMedia('(prefers-color-scheme: dark)').matches&&document.documentElement.dataset.theme!=='light'||document.documentElement.dataset.theme==='dark';
+  M.floor.color.set(dark?0x2a2e31:0xc4c4bc);}
+applyTheme();matchMedia('(prefers-color-scheme: dark)').addEventListener('change',applyTheme);
+
+let open=0,openGoal=0;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function tick(){
+  open+= reduce?(openGoal-open):(openGoal-open)*0.12;
+  dL.rotation.y=-open*1.75; dR.rotation.y=open*1.75;
+  if(goal){const k=reduce?1:0.1;th+=(goal.th-th)*k;ph+=(goal.ph-ph)*k;rad+=(goal.r-rad)*k;if(Math.abs(goal.th-th)<.002)goal=null;}
+  place();renderer.render(scene,cam);requestAnimationFrame(tick);}
+tick();
+
+const tog=(id,fn)=>{const b=document.getElementById(id);b.addEventListener('click',()=>{const v=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',v);fn(v,b);});};
+tog('bDoors',(v,b)=>{openGoal=v?1:0;b.textContent=v?'Close doors':'Open doors';});
+tog('bProps',v=>props.visible=v);
+tog('bTable',v=>desk.visible=v);
+document.getElementById('vFront').onclick=()=>goal={th:0,ph:1.5,r:150};
+document.getElementById('vAngle').onclick=()=>goal={th:-0.62,ph:1.3,r:150};
+document.getElementById('vSide').onclick=()=>goal={th:-Math.PI/2,ph:1.5,r:140};
+})();
+</script>
+</body>
+</html>
