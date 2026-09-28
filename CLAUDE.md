@@ -35,14 +35,16 @@ Local preview: `npx serve .`
 
 Sits beside my PC desk (desk top is about 30″ from the floor, desk is 24″ deep). Located in the Islamabad/Rawalpindi area, a high seismic zone.
 
+**Orientation: the cabinet stands to the RIGHT of the desk** (the desk already exists and is not moving). The PC is a fish-tank case, so its glass panel is on the case's left side and must face the chair. Therefore the PC bay is at the cabinet's **left** end and the 9″ cubby column at the **right** end, out of the sightline. The whole layout was mirrored on 2026-09-28 to fix this; before that the plan assumed the cabinet sat to the left of the desk with the cubbies nearest the chair, which would have buried the glass behind the cubby column. The cut list is unaffected by the mirror, since every part keeps its size and only positions change. The PC prop does *not* mirror with the cabinet: it translates, so the glass stays on its left face.
+
 Overall 32″ W × 24″ D (carcass 23¾″) × 72″ H, on 6 adjustable M10 levelling feet (about 1½″, ±½″).
 
 - Lower half: closed MDF cabinet, body 1½″ to 30″, two full-overlay doors, centre divider, 3 adjustable shelves, 5 mm hardboard back with vents and cable holes. Contents: spare server laptop, cords, extension boards, small PC UPS (never big inverter batteries).
 - Cabinet top at 30″ = desk height. PC stands here in the right bay.
 - Upper half: welded 1″ square steel tube frame, bolted to the cabinet top.
-  - Left column, 9″ clear: cubbies with shelves at 38″ and 46″ on 1″ angle ledges.
-  - PC bay, 20″ clear wide, 23″ clear high (30″ to 53″).
-  - Rear ledge at 38″, 20 × 5″, behind the PC, for devices in the rear ports. Leaves a 3″ cable gap.
+  - Right column (x 22–31), 9″ clear: cubbies with shelves at 38″ and 46″ on 1″ angle ledges.
+  - PC bay on the left (x 1–21), 20″ clear wide, 23″ clear high (30″ to 53″). PC sits x 2–20, so 1″ clear each side.
+  - Rear ledge at 38″, 20 × 5″ (x 1–21), behind the PC, for devices in the rear ports, plus a phone stood up on charge or an external hard drive. Leaves a 3″ cable gap.
   - Full-width middle shelf at 54″, top board at 71¼–72″.
   - Rail rings at 30″ (front bar is the 1″ PC anti-slide lip), 53″, 70¼″. Flat-bar X braces on the back of the left column and the top section.
 - Earthquake: anti-tip wall brackets at the top rail, heavy stuff low, anti-slip mat under PC.
