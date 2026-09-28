@@ -106,7 +106,8 @@ footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
   <p><b>24″ deep, matched to your desk.</b> This clears your PC with room to spare in either direction. With a 14″ deep PC you get 1¾″ of margin at the front, a 3″ cable gap behind the PC, and a 5″ deep ledge at the back for whatever is plugged into the rear ports.</p>
   <p><b>The cabinet stands to the right of your desk, and the PC bay is on the left.</b> Your desk is already in place and the cabinet goes at your right hand, so the drawings are set up that way: the desk is on the left in the 3D view. The PC stands square to the front, glass panel facing straight out of the cabinet, so the fish tank reads as a display piece from anywhere in the room rather than only from one seat. The 20″ PC bay sits at the cabinet's left end, nearest the desk, which keeps the power and monitor leads short and drops them through the grommets right above the extension boards. The 9″ cubby column moved to the right end, away from the case, so nothing crowds the glass or the side intakes.</p>
   <div class="note"><b>Mirror this if your desk moves.</b> Everything here is left–right mirrored from the first version of this plan. The cut list does not change at all, because every part is the same size as before: only the positions change. If the cabinet ever has to go on the <i>left</i> of the desk, mirror the whole thing back and the same parts still build it.</div>
-  <div class="note"><b>Check one number before cutting.</b> You wrote the PC as 14″ long, 18″ wide, 18″ high. Most tower cases are deeper front-to-back than they are wide. Put a tape on the PC side panel, front to back. If that reads 14″, this design fits as drawn. If it reads 18″, everything still fits, but cut the rear ledge (part K) to 3″ deep instead of 5″.</div>
+  <div class="note"><b>PC size, confirmed.</b> The case is <b>8″ across the front, 14″ front to back, 18″ high</b>. It stands square to the front, so its back panel faces the rear ledge and everything plugged into the rear ports lands on that ledge. Against the 14″ depth you get 1¾″ of margin at the front and a 3″ cable gap behind, with the 5″ ledge beyond that.</div>
+  <div class="note"><b>The PC bay is wider than the PC needs.</b> At 8″ wide the case uses well under half of the 20″ bay, leaving about 12″ of open shelf beside it. That is deliberate breathing room and landing space, not a mistake, but if you would rather not pay for it, the bay could come down to roughly 12–14″ and the cubby column grow to 15–17″ without changing the 32″ overall width or any cabinet part below. Say the word and I will redraw it.</div>
 </section>
 
 <section>
@@ -246,7 +247,7 @@ P('metal',1,21,37,38,0,1,'rrail');
 const doorL={x:[0.06,15.94],y:[1.62,29.12],z:[D,D+0.75]}, doorR={x:[16.06,31.94],y:[1.62,29.12],z:[D,D+0.75]};
 const feet=[];[2,16,30].forEach(x=>[2,D-2].forEach(z=>feet.push({x,z})));
 const braces=[[[31.5,31],[21.5,53]],[[21.5,31],[31.5,53]],[[0.5,54.9],[31.5,70.1]],[[31.5,54.9],[0.5,70.1]]];
-const PC={x:[2,20],y:[30,48],z:[8,22]};
+const PC={x:[7,15],y:[30,48],z:[8,22]};
 
 /* ---------- 2D drawings ---------- */
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
@@ -313,7 +314,7 @@ const cuts=[
  ['G','Middle shelf',1,'32 × 23¾','813 × 603'],
  ['H','Top',1,'32 × 23¾','813 × 603'],
  ['J','Cubby shelves',2,'9 × 23¾','229 × 603'],
- ['K','Rear ledge',1,'20 × 5 (3 if PC is 18″ deep)','508 × 127'],
+ ['K','Rear ledge',1,'20 × 5','508 × 127'],
 ];
 document.getElementById('cutBody').innerHTML=cuts.map(c=>`<tr><td><span class="key">${c[0]}</span></td><td>${c[1]}</td><td class="n">${c[2]}</td><td class="n">${c[3]}</td><td class="n">${c[4]}</td></tr>`).join('');
 
@@ -390,15 +391,15 @@ const floor=new THREE.Mesh(new THREE.PlaneGeometry(600,600),M.floor);floor.rotat
 // props
 const props=new THREE.Group();scene.add(props);
 const pb=(x0,x1,y0,y1,z0,z1,c,em)=>{const m=mat(c);if(em){m.emissive=new THREE.Color(em);m.emissiveIntensity=.9;}return box(x0,x1,y0,y1,z0,z1,m,props);};
-// PC case. Fish-tank glass on the FRONT face, looking straight out of the cabinet.
-// Both side panels are solid; the front is the window.
-pb(2,20,30.3,30.9,8,22,0x1a1c1f); pb(2,20,47.4,48,8,22,0x1a1c1f);
-pb(2,2.6,30.3,48,8,22,0x1a1c1f); pb(19.4,20,30.3,48,8,22,0x1a1c1f);
-pb(2,20,30.3,48,8,8.6,0x1a1c1f);
-pb(3,3.5,31.5,46.8,21.4,21.6,0x0,0x57c7e3);
-const glass=new THREE.Mesh(new THREE.BoxGeometry(16.5,16.5,.15),new THREE.MeshStandardMaterial({color:0x6a8090,transparent:true,opacity:.28,roughness:.1}));glass.position.set(11,39.15,21.92);props.add(glass);
-pb(17.8,19.3,32,46.5,9.5,20.5,0x27323d); pb(8,17.8,38,40.4,10.5,20,0x2e3136); pb(8,8.3,38.2,40.2,10.6,19.8,0x0,0xa06cf0);
-pb(12,17.8,42,45.5,13,17,0x3a3d42);
+// PC case: 8″ wide across the front, 14″ deep front-to-back, 18″ high.
+// Faces square to the front: glass on the front, back panel toward the rear ledge.
+pb(7,15,30,30.6,8,22,0x1a1c1f); pb(7,15,47.4,48,8,22,0x1a1c1f);
+pb(7,7.6,30,48,8,22,0x1a1c1f); pb(14.4,15,30,48,8,22,0x1a1c1f);
+pb(7,15,30,48,8,8.6,0x1a1c1f);
+pb(7.8,8.3,31.5,46.5,21.4,21.6,0x0,0x57c7e3);
+const glass=new THREE.Mesh(new THREE.BoxGeometry(6.8,16.8,.15),new THREE.MeshStandardMaterial({color:0x6a8090,transparent:true,opacity:.28,roughness:.1}));glass.position.set(11,39,21.92);props.add(glass);
+pb(13.2,14.3,32,46.5,9.5,20.5,0x27323d); pb(7.8,13.2,38,40.4,10.5,20,0x2e3136); pb(7.8,8.1,38.2,40.2,10.6,19.8,0x0,0xa06cf0);
+pb(9.5,13.2,42,45.5,13,17,0x3a3d42);
 // cubbies: drives, chargers, hub
 [[26.6,30.2],[22.8,26.2]].forEach((xx,i)=>{pb(xx[0],xx[1],30,31.1,9,14,0x2c2f33);pb(xx[0],xx[1],31.1,32.2,9,14,i?0x7a2a2a:0x2c2f33);});
 pb(23,30,30,31,16,21,0x3b4a5a);

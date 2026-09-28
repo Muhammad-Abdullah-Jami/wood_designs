@@ -51,7 +51,9 @@ Overall 32″ W × 24″ D (carcass 23¾″) × 72″ H, on 6 adjustable M10 lev
   - Rail rings at 30″ (front bar is the 1″ PC anti-slide lip), 53″, 70¼″. Flat-bar X braces on the back of the left column and the top section.
 - Earthquake: anti-tip wall brackets at the top rail, heavy stuff low, anti-slip mat under PC.
 
-PC size as I gave it: 14″ long × 18″ wide × 18″ high. **Open question:** true front-to-back depth. The model assumes 14″ deep. If it is 18″, the rear ledge (part K) becomes 3″ deep.
+**PC size, confirmed 2026-09-28: 8″ wide across the front × 14″ deep front-to-back × 18″ high.** It stands square to the front, so the back panel faces the rear ledge. The earlier "14 long × 18 wide × 18 high" reading was wrong — 18 is the height, not the width — and the model briefly had the case 18″ wide. The rear ledge stays 5″ deep; the old "3″ if the PC is 18″ deep" contingency is dead.
+
+Consequence not yet resolved: at 8″ wide the PC uses well under half the 20″ PC bay, leaving ~12″ spare. The bay could shrink to ~12–14″ and the cubby column grow, without changing the 32″ overall width or any part below. Awaiting the user's call.
 
 MDF cut list (needs **two** 8 × 4 sheets; one is not enough):
 
