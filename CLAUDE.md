@@ -35,7 +35,9 @@ Local preview: `npx serve .`
 
 Sits beside my PC desk (desk top is about 30″ from the floor, desk is 24″ deep). Located in the Islamabad/Rawalpindi area, a high seismic zone.
 
-**Orientation: the cabinet stands to the RIGHT of the desk** (the desk already exists and is not moving). The PC is a fish-tank case, so its glass panel is on the case's left side and must face the chair. Therefore the PC bay is at the cabinet's **left** end and the 9″ cubby column at the **right** end, out of the sightline. The whole layout was mirrored on 2026-09-28 to fix this; before that the plan assumed the cabinet sat to the left of the desk with the cubbies nearest the chair, which would have buried the glass behind the cubby column. The cut list is unaffected by the mirror, since every part keeps its size and only positions change. The PC prop does *not* mirror with the cabinet: it translates, so the glass stays on its left face.
+**Orientation: the cabinet stands to the RIGHT of the desk** (the desk already exists and is not moving). The PC bay is at the cabinet's **left** end (nearest the desk, so power and monitor leads stay short) and the 9″ cubby column at the **right** end. The whole layout was mirrored on 2026-09-28 to fix this; before that the plan assumed the cabinet sat to the left of the desk. The cut list is unaffected by the mirror, since every part keeps its size and only positions change.
+
+The PC is a fish-tank case and **its glass panel faces the FRONT**, square out of the cabinet, not sideways. (It briefly faced left during the mirror fix; corrected same day.) In the model both side panels are solid and the front face is the glass. The PC prop does *not* mirror with the cabinet — mirroring it would flip the glass to the wrong face.
 
 Overall 32″ W × 24″ D (carcass 23¾″) × 72″ H, on 6 adjustable M10 levelling feet (about 1½″, ±½″).
 

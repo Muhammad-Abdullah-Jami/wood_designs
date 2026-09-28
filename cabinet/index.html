@@ -104,7 +104,7 @@ footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
   <p><b>Closed below, open above.</b> Junk you rarely touch (the spare laptop, cords, the extension boards, a small UPS) goes behind doors where dust can't reach it. Everything you touch often, and the PC itself, stays in the open rack where you can see it and grab it standing up.</p>
   <p><b>Steel for the upper half, not MDF.</b> I recommend a welded 1″ square tube frame on top of the MDF cabinet, a hybrid of your metal-frame idea and a cabinet. Tall MDF side panels would hide the PC, trap heat around it and need a second full sheet on their own. The thin steel posts leave the PC in view, let air move freely, and the steel rails run under every shelf edge, so the 32″ MDF shelves can't sag over the years (unsupported MDF is the weakest sheet material for long spans). Welders who make iron racks and gates can build this frame cheaply in any market.</p>
   <p><b>24″ deep, matched to your desk.</b> This clears your PC with room to spare in either direction. With a 14″ deep PC you get 1¾″ of margin at the front, a 3″ cable gap behind the PC, and a 5″ deep ledge at the back for whatever is plugged into the rear ports.</p>
-  <p><b>The cabinet stands to the right of your desk, and the PC bay is on the left.</b> Your desk is already in place and the cabinet goes at your right hand, so the drawings are set up that way: the desk is on the left in the 3D view. A fish-tank case carries its glass panel on the case's left side, which is why a PC like that belongs on your right in the first place, facing you. So the 20″ PC bay sits at the cabinet's left end, hard against the open side nearest your chair, and the 9″ cubby column moved to the right end, out of the sightline. Put the cubbies on the near side instead and you would be looking at the backs of hard drives all day, with the glass facing into a wall of shelves.</p>
+  <p><b>The cabinet stands to the right of your desk, and the PC bay is on the left.</b> Your desk is already in place and the cabinet goes at your right hand, so the drawings are set up that way: the desk is on the left in the 3D view. The PC stands square to the front, glass panel facing straight out of the cabinet, so the fish tank reads as a display piece from anywhere in the room rather than only from one seat. The 20″ PC bay sits at the cabinet's left end, nearest the desk, which keeps the power and monitor leads short and drops them through the grommets right above the extension boards. The 9″ cubby column moved to the right end, away from the case, so nothing crowds the glass or the side intakes.</p>
   <div class="note"><b>Mirror this if your desk moves.</b> Everything here is left–right mirrored from the first version of this plan. The cut list does not change at all, because every part is the same size as before: only the positions change. If the cabinet ever has to go on the <i>left</i> of the desk, mirror the whole thing back and the same parts still build it.</div>
   <div class="note"><b>Check one number before cutting.</b> You wrote the PC as 14″ long, 18″ wide, 18″ high. Most tower cases are deeper front-to-back than they are wide. Put a tape on the PC side panel, front to back. If that reads 14″, this design fits as drawn. If it reads 18″, everything still fits, but cut the rear ledge (part K) to 3″ deep instead of 5″.</div>
 </section>
@@ -127,7 +127,7 @@ footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
     <tbody>
       <tr><td>Feet</td><td class="n">0 – 1½″</td><td>6 levelling feet, about ±½″ of adjustment, so you can match the desk exactly.</td></tr>
       <tr><td>Cabinet top</td><td class="n">30″</td><td>Same height as your desk top. PC stands here.</td></tr>
-      <tr><td>Right cubbies</td><td class="n">30″, 38″, 46″</td><td>Three open cubbies, 9″ wide and 6–7″ tall, for drives, chargers, hubs. On the far side from the desk, so they never block the glass.</td></tr>
+      <tr><td>Right cubbies</td><td class="n">30″, 38″, 46″</td><td>Three open cubbies, 9″ wide and 6–7″ tall, for drives, chargers, hubs. On the far side from the desk, so they never crowd the PC.</td></tr>
       <tr><td>Rear ledge</td><td class="n">38″</td><td>5″ deep, full 20″ across the back of the PC bay. Stand your phone here on charge, or park an external hard drive, next to whatever is plugged into the rear ports.</td></tr>
       <tr><td>PC bay clearance</td><td class="n">23″</td><td>18″ PC plus 5″ breathing room for top exhaust fans.</td></tr>
       <tr><td>Middle shelf</td><td class="n">54¾″</td><td>Full width, spare keyboard, router, speakers.</td></tr>
@@ -390,11 +390,13 @@ const floor=new THREE.Mesh(new THREE.PlaneGeometry(600,600),M.floor);floor.rotat
 // props
 const props=new THREE.Group();scene.add(props);
 const pb=(x0,x1,y0,y1,z0,z1,c,em)=>{const m=mat(c);if(em){m.emissive=new THREE.Color(em);m.emissiveIntensity=.9;}return box(x0,x1,y0,y1,z0,z1,m,props);};
-// PC case. Glass side panel stays on the case's LEFT face, facing the desk.
-pb(2,20,30.3,30.9,8,22,0x1a1c1f); pb(2,20,47.4,48,8,22,0x1a1c1f); pb(19.4,20,30.3,48,8,22,0x1a1c1f);
-pb(2,20,30.3,48,8,8.6,0x1a1c1f); pb(2,20,30.3,48,21.4,22,0x202326);
-pb(2.6,3.1,31.5,46.8,21.9,22.08,0x0,0x57c7e3);
-const glass=new THREE.Mesh(new THREE.BoxGeometry(.15,16.5,13.2),new THREE.MeshStandardMaterial({color:0x6a8090,transparent:true,opacity:.28,roughness:.1}));glass.position.set(2.1,39.15,15);props.add(glass);
+// PC case. Fish-tank glass on the FRONT face, looking straight out of the cabinet.
+// Both side panels are solid; the front is the window.
+pb(2,20,30.3,30.9,8,22,0x1a1c1f); pb(2,20,47.4,48,8,22,0x1a1c1f);
+pb(2,2.6,30.3,48,8,22,0x1a1c1f); pb(19.4,20,30.3,48,8,22,0x1a1c1f);
+pb(2,20,30.3,48,8,8.6,0x1a1c1f);
+pb(3,3.5,31.5,46.8,21.4,21.6,0x0,0x57c7e3);
+const glass=new THREE.Mesh(new THREE.BoxGeometry(16.5,16.5,.15),new THREE.MeshStandardMaterial({color:0x6a8090,transparent:true,opacity:.28,roughness:.1}));glass.position.set(11,39.15,21.92);props.add(glass);
 pb(17.8,19.3,32,46.5,9.5,20.5,0x27323d); pb(8,17.8,38,40.4,10.5,20,0x2e3136); pb(8,8.3,38.2,40.2,10.6,19.8,0x0,0xa06cf0);
 pb(12,17.8,42,45.5,13,17,0x3a3d42);
 // cubbies: drives, chargers, hub
