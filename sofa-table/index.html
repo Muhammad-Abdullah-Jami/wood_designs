@@ -28,7 +28,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.5 Barlow,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 .sheet{max-width:1500px;margin:18px auto;background:var(--sheet);border:2px solid var(--ink);outline:1px solid var(--ink);outline-offset:5px;
-  display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-areas:"iso iso floor" "front plan sect" "cutsheet gun gun" "cut notes title";}
+  display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-areas:"model model model" "iso iso floor" "front plan sect" "cutsheet gun gun" "cut notes title";}
 .v{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:14px 16px 10px;min-width:0;display:flex;flex-direction:column}
 .v svg{width:100%;height:auto;display:block;flex:1;max-height:620px}
 .v{justify-content:space-between}
@@ -56,6 +56,17 @@ ol li{margin-bottom:6px;max-width:62ch}
 .kv dt{color:var(--soft)} .kv dd{margin:0}
 .legend{display:flex;flex-wrap:wrap;gap:10px 16px;font-size:13px;color:var(--soft)}
 .legend i{display:inline-block;width:14px;height:10px;margin-right:6px;vertical-align:-1px;border:1px solid var(--ink)}
+/* 3D viewer */
+.model{grid-area:model;border-right:0;justify-content:flex-start}
+.viewer{position:relative;width:100%;height:clamp(300px,50vh,540px);border:1px solid var(--rule);background:var(--void);overflow:hidden}
+.viewer canvas{display:block;width:100%;height:100%;touch-action:none}
+.hint{position:absolute;left:12px;bottom:10px;font-size:13px;color:var(--soft);
+  background:color-mix(in srgb,var(--sheet) 82%,transparent);padding:4px 10px;border-radius:8px;pointer-events:none}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.controls button{font:500 14px/1 Barlow,"Segoe UI",sans-serif;color:var(--ink);background:var(--sheet);
+  border:1px solid var(--rule);border-radius:999px;padding:8px 15px;cursor:pointer}
+.controls button:hover{border-color:var(--ink)}
+.controls button[aria-pressed="true"]{background:var(--ink);color:var(--sheet);border-color:var(--ink)}
 /* svg classes */
 .shadow{fill:#000;opacity:.08}
 .leg{fill:var(--leg);stroke:var(--legline);stroke-width:.12}
@@ -108,18 +119,30 @@ ol li{margin-bottom:6px;max-width:62ch}
 .steps{margin:10px 0 0;padding-left:20px;font-size:14px}
 .steps li{break-inside:avoid;margin-bottom:5px}
 @media (max-width:1100px){
-  .sheet{grid-template-columns:1fr 1fr;grid-template-areas:"iso iso" "floor floor" "front front" "plan sect" "cutsheet cutsheet" "gun gun" "cut cut" "notes title";margin:10px}
+  .sheet{grid-template-columns:1fr 1fr;grid-template-areas:"model model" "iso iso" "floor floor" "front front" "plan sect" "cutsheet cutsheet" "gun gun" "cut cut" "notes title";margin:10px}
   .floor{border-right:0}
 }
 @media (max-width:680px){ .steps{columns:1}
-  .sheet{grid-template-columns:1fr;grid-template-areas:"iso" "floor" "front" "plan" "sect" "cutsheet" "gun" "cut" "notes" "title";outline:none;border-width:1px}
+  .sheet{grid-template-columns:1fr;grid-template-areas:"model" "iso" "floor" "front" "plan" "sect" "cutsheet" "gun" "cut" "notes" "title";outline:none;border-width:1px}
   .v{border-right:0}
 }
-@media print{body{background:#fff}.sheet{margin:0;max-width:none}}
+@media print{body{background:#fff}.sheet{margin:0;max-width:none}.model{display:none}}
 </style>
 </head>
 <body>
 <main class="sheet">
+
+<section class="v model">
+  <div class="viewer" id="viewer"><div class="hint" id="hint">Drag to rotate · scroll or pinch to zoom</div></div>
+  <div class="controls" role="group" aria-label="Model controls">
+    <button id="vAngle">Angled view</button>
+    <button id="vFront">Front view</button>
+    <button id="vEnd">End view</button>
+    <button id="vTop">Top view</button>
+    <button id="bLegs" aria-pressed="true">Show legs</button>
+  </div>
+  <div class="cap"><span>The table in 3D</span><em>live model, not part of the printed sheet · 47 × 24 × 16½″</em></div>
+</section>
 
 <section class="v iso">
   <svg viewBox="-25.7 -12.9 77.0 62.0" role="img" aria-label="Isometric view of the sofa table"><polygon class="shadow" points="-0.866,7.583 43.301,33.083 20.785,46.083 -23.383,20.583"/><polygon class="leg" points="-0.416,2.714 -0.293,10.816 0.466,10.849 1.282,2.786"/><polygon class="leg" points="35.104,23.406 37.299,32.602 38.046,32.463 36.776,23.094"/><polygon class="face-top" points="0.000,-7.417 40.703,16.083 19.919,28.083 -20.785,4.583"/><polygon class="face-end" points="40.703,23.500 19.919,35.500 19.919,28.083 40.703,16.083"/><defs><clipPath id="op0"><polygon points="-20.171,11.646 -0.740,22.864 -0.740,16.864 -20.171,5.646"/></clipPath><clipPath id="op1"><polygon points="-0.126,23.219 19.305,34.437 19.305,28.437 -0.126,17.219"/></clipPath></defs><g clip-path="url(#op0)"><polygon class="void" points="-20.171,11.646 -0.740,22.864 -0.740,16.864 -20.171,5.646"/><polygon class="face-inner-bottom" points="0.614,-0.354 20.045,10.864 -0.740,22.864 -20.171,11.646"/><polygon class="face-inner-wall" points="0.614,-0.354 -20.171,11.646 -20.171,5.646 0.614,-6.354"/></g><g clip-path="url(#op1)"><polygon class="void" points="-0.126,23.219 19.305,34.437 19.305,28.437 -0.126,17.219"/><polygon class="face-inner-bottom" points="20.658,11.219 40.089,22.437 19.305,34.437 -0.126,23.219"/><polygon class="face-inner-wall" points="20.658,11.219 -0.126,23.219 -0.126,17.219 20.658,5.219"/></g><path class="face-front" fill-rule="evenodd" d="M-20.785,12.000 L19.919,35.500 L19.919,28.083 L-20.785,4.583 Z M-20.171,11.646 L-0.740,22.864 L-0.740,16.864 L-20.171,5.646 Z M-0.126,23.219 L19.305,34.437 L19.305,28.437 L-0.126,17.219 Z"/><polygon class="leg" points="-16.856,12.087 -18.126,21.060 -17.381,21.205 -15.187,12.413"/><polygon class="leg" points="18.636,32.779 19.452,42.846 20.212,42.820 20.335,32.721"/><text class="lab" x="9.96" y="10.33" font-size="1.8" text-anchor="middle">47″ top, 18 mm MDF</text><text class="lab" x="32.51" y="20.88" font-size="1.8" text-anchor="start">24″</text><text class="note" x="-10.46" y="11.25" font-size="1.4" text-anchor="middle"></text></svg>
@@ -240,5 +263,140 @@ ol li{margin-bottom:6px;max-width:62ch}
 </section>
 
 </main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+const host=document.getElementById('viewer'), hint=document.getElementById('hint');
+if(!window.THREE){hint.textContent='3D view could not load. The drawings on this sheet are complete on their own.';return;}
+
+/* ---------- geometry (inches): x = left→right, y = floor→up, z = back→front ---------- */
+const L=47, DP=24, HT=16.5;      // 47 long, 24 deep, 16½ tall overall
+const T=0.7087;                  // 18 mm board
+const BOT=HT-7.417;              // 9.0827, underside of the carcass = top of the legs
+const CTOP=HT-T;                 // 15.7913, underside of the top board
+const DIV0=(L-T)/2, DIV1=(L+T)/2;// centre divider, 23.1457 … 23.8543
+
+const board=[
+  ['top',    0,    L,     CTOP, HT,   0, DP],
+  ['end',    0,    T,     BOT,  CTOP, 0, DP],
+  ['end',    L-T,  L,     BOT,  CTOP, 0, DP],
+  ['bottom', T,    L-T,   BOT,  BOT+T,0, DP],
+  ['divider',DIV0, DIV1,  BOT+T,CTOP, 0, DP],
+];
+// legs: top centres, splaying outward and tapering on the way down
+const PLATE=0.12, LEGTOP=BOT-PLATE, ST=0.8, SB=0.4, SPX=1.2, SPZ=0.8;
+const legPos=[[3,2.5],[3,21.5],[44,2.5],[44,21.5]];
+
+/* ---------- three.js ---------- */
+const renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.outputEncoding=THREE.sRGBEncoding;
+host.prepend(renderer.domElement);
+const scene=new THREE.Scene();
+const cam=new THREE.PerspectiveCamera(35,1,1,1000);
+scene.add(new THREE.HemisphereLight(0xffffff,0x8a8a80,0.8));
+const sun=new THREE.DirectionalLight(0xffffff,0.75);
+sun.position.set(-40,70,60); sun.castShadow=true; sun.shadow.mapSize.set(2048,2048);
+Object.assign(sun.shadow.camera,{left:-50,right:100,top:80,bottom:-30,near:5,far:250});
+scene.add(sun);
+const fill=new THREE.DirectionalLight(0xffffff,0.22); fill.position.set(70,30,-50); scene.add(fill);
+
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const M={
+  wood:new THREE.MeshStandardMaterial({roughness:.75}),
+  woodTop:new THREE.MeshStandardMaterial({roughness:.7}),
+  inner:new THREE.MeshStandardMaterial({roughness:.85}),
+  leg:new THREE.MeshStandardMaterial({roughness:.42,metalness:.25}),
+  floor:new THREE.MeshStandardMaterial({roughness:1}),
+};
+function box(x0,x1,y0,y1,z0,z1,m,parent){
+  const g=new THREE.BoxGeometry(x1-x0,y1-y0,z1-z0), me=new THREE.Mesh(g,m);
+  me.position.set((x0+x1)/2,(y0+y1)/2,(z0+z1)/2);
+  me.castShadow=true; me.receiveShadow=true; (parent||scene).add(me); return me;}
+
+// floor
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(600,600),M.floor);
+floor.rotation.x=-Math.PI/2; floor.receiveShadow=true; scene.add(floor);
+
+// carcass
+board.forEach(p=>box(p[1],p[2],p[3],p[4],p[5],p[6], p[0]==='top'?M.woodTop:(p[0]==='bottom'?M.inner:M.wood)));
+
+// legs: a square frustum, splayed out and tapered, built face by face so the shading stays flat
+function legGeom(xt,zt,xb,zb){
+  const A=[[xt-ST,LEGTOP,zt-ST],[xt+ST,LEGTOP,zt-ST],[xt+ST,LEGTOP,zt+ST],[xt-ST,LEGTOP,zt+ST]];
+  const B=[[xb-SB,0,zb-SB],[xb+SB,0,zb-SB],[xb+SB,0,zb+SB],[xb-SB,0,zb+SB]];
+  const v=[], q=(a,b,c,d)=>v.push(...a,...b,...c,...a,...c,...d);
+  q(A[0],A[3],A[2],A[1]);            // top
+  q(B[0],B[1],B[2],B[3]);            // bottom
+  q(A[0],A[1],B[1],B[0]);            // back
+  q(A[2],A[3],B[3],B[2]);            // front
+  q(A[3],A[0],B[0],B[3]);            // left
+  q(A[1],A[2],B[2],B[1]);            // right
+  const g=new THREE.BufferGeometry();
+  g.setAttribute('position',new THREE.Float32BufferAttribute(v,3));
+  g.computeVertexNormals(); return g;}
+const legs=new THREE.Group(); scene.add(legs);
+legPos.forEach(([xc,zc])=>{
+  const xb=xc+(xc<L/2?-SPX:SPX), zb=zc+(zc<DP/2?-SPZ:SPZ);
+  const me=new THREE.Mesh(legGeom(xc,zc,xb,zb),M.leg);
+  me.castShadow=true; me.receiveShadow=true; legs.add(me);
+  box(xc-1.3,xc+1.3,BOT-PLATE,BOT,zc-1.3,zc+1.3,M.leg,legs);   // angled mounting plate
+});
+
+/* ---------- theme ---------- */
+function applyTheme(){
+  scene.background=new THREE.Color(css('--void')||'#DCE0D8');
+  M.wood.color.set(css('--board')||'#E6D3AE');
+  M.woodTop.color.set(css('--board-top')||'#EFE0C2');
+  M.inner.color.set(css('--inner')||'#C9AE80');
+  M.leg.color.set(css('--leg')||'#161819');
+  const dark=matchMedia('(prefers-color-scheme: dark)').matches&&document.documentElement.dataset.theme!=='light'
+    ||document.documentElement.dataset.theme==='dark';
+  M.floor.color.set(dark?0x2a2e31:0xd7dad2);}
+applyTheme();
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',applyTheme);
+
+/* ---------- camera controls (r128 has no OrbitControls in the UMD build) ---------- */
+const target=new THREE.Vector3(L/2,7.5,DP/2);
+let th=0.72, ph=1.16, rad=95, goal=null;
+function place(){cam.position.set(
+  target.x+rad*Math.sin(ph)*Math.sin(th),
+  target.y+rad*Math.cos(ph),
+  target.z+rad*Math.sin(ph)*Math.cos(th)); cam.lookAt(target);}
+const ptrs=new Map(); let lastD=0;
+const cv=renderer.domElement;
+cv.addEventListener('pointerdown',e=>{cv.setPointerCapture(e.pointerId);ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});goal=null;});
+cv.addEventListener('pointermove',e=>{if(!ptrs.has(e.pointerId))return;const p=ptrs.get(e.pointerId);
+  if(ptrs.size===1){th-=(e.clientX-p.x)*0.008;ph=Math.min(1.56,Math.max(0.12,ph-(e.clientY-p.y)*0.006));}
+  p.x=e.clientX;p.y=e.clientY;
+  if(ptrs.size===2){const a=[...ptrs.values()];const d=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y);
+    if(lastD)rad=Math.min(220,Math.max(38,rad*lastD/d));lastD=d;}});
+const up=e=>{ptrs.delete(e.pointerId);lastD=0;};
+cv.addEventListener('pointerup',up); cv.addEventListener('pointercancel',up);
+cv.addEventListener('wheel',e=>{e.preventDefault();rad=Math.min(220,Math.max(38,rad*(1+e.deltaY*0.001)));},{passive:false});
+
+function resize(){const r=host.getBoundingClientRect();
+  renderer.setSize(r.width,r.height,false);cam.aspect=r.width/r.height;
+  cam.fov=r.width<600?46:35;cam.updateProjectionMatrix();}
+new ResizeObserver(resize).observe(host); resize();
+
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function tick(){
+  if(goal){const k=reduce?1:0.12;th+=(goal.th-th)*k;ph+=(goal.ph-ph)*k;rad+=(goal.r-rad)*k;
+    if(Math.abs(goal.th-th)<.002&&Math.abs(goal.r-rad)<.5)goal=null;}
+  place(); renderer.render(scene,cam); requestAnimationFrame(tick);}
+tick();
+
+document.getElementById('vAngle').onclick=()=>goal={th:0.72,ph:1.16,r:95};
+document.getElementById('vFront').onclick=()=>goal={th:0,ph:1.5,r:92};
+document.getElementById('vEnd').onclick=()=>goal={th:Math.PI/2,ph:1.5,r:70};
+document.getElementById('vTop').onclick=()=>goal={th:0,ph:0.16,r:92};
+const bl=document.getElementById('bLegs');
+bl.addEventListener('click',()=>{const v=bl.getAttribute('aria-pressed')!=='true';
+  bl.setAttribute('aria-pressed',v); legs.visible=v; bl.textContent=v?'Show legs':'Legs hidden';});
+})();
+</script>
 </body>
 </html>
